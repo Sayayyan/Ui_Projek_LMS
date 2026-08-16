@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html class="light" lang="id">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Pusat Karir - Vokasi Pintar</title>
+  
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-secondary": "#ffffff",
+            "surface-bright": "#f8f9ff",
+            "on-primary-container": "#a8b8ff",
+            "secondary": "#006c49",
+            "outline": "#757684",
+            "tertiary-container": "#6b4200",
+            "secondary-fixed-dim": "#4edea3",
+            "surface-container-low": "#eff4ff",
+            "secondary-container": "#6cf8bb",
+            "secondary-fixed": "#6ffbbe",
+            "inverse-surface": "#27313f",
+            "background": "#f8f9ff",
+            "on-error-container": "#93000a",
+            "primary-container": "#1e40af",
+            "surface-container-lowest": "#ffffff",
+            "tertiary": "#4c2e00",
+            "on-surface": "#121c2a",
+            "surface-dim": "#d0dbed",
+            "on-surface-variant": "#444653",
+            "outline-variant": "#c4c5d5",
+            "surface-container-high": "#dee9fc",
+            "on-secondary-fixed-variant": "#005236",
+            "on-tertiary-container": "#ffa929",
+            "inverse-primary": "#b8c4ff",
+            "error": "#ba1a1a",
+            "error-container": "#ffdad6",
+            "tertiary-fixed-dim": "#ffb95f",
+            "primary": "#00288e",
+            "primary-fixed-dim": "#b8c4ff",
+            "on-primary-fixed-variant": "#173bab",
+            "on-secondary-container": "#00714d",
+            "on-tertiary-fixed": "#2a1700",
+            "surface-container-highest": "#d9e3f6",
+            "on-primary": "#ffffff",
+            "tertiary-fixed": "#ffddb8",
+            "on-background": "#121c2a",
+            "on-tertiary": "#ffffff",
+            "on-tertiary-fixed-variant": "#653e00",
+            "on-secondary-fixed": "#002113",
+            "primary-fixed": "#dde1ff",
+            "inverse-on-surface": "#eaf1ff",
+            "surface-variant": "#d9e3f6",
+            "on-primary-fixed": "#001453",
+            "on-error": "#ffffff",
+            "surface": "#f8f9ff",
+            "surface-tint": "#3755c3",
+            "surface-container": "#e6eeff"
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "container-max": "1280px",
+            "gutter": "24px",
+            "base": "8px",
+            "margin-desktop": "32px",
+            "margin-mobile": "16px"
+          },
+          fontFamily: {
+            "headline-lg-mobile": ["Inter"],
+            "body-lg": ["Inter"],
+            "label-sm": ["Inter"],
+            "label-md": ["Inter"],
+            "display-lg": ["Inter"],
+            "headline-md": ["Inter"],
+            "headline-lg": ["Inter"],
+            "body-md": ["Inter"]
+          },
+          fontSize: {
+            "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+            "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+            "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+            "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+            "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+            "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+            "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: #c4c5d5;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+
+<body class="bg-background text-on-background font-body-md antialiased h-screen overflow-hidden flex">
+
+  <!-- Desktop Sidebar -->
+  <nav class="hidden md:flex flex-col w-64 h-screen fixed left-0 top-0 bg-surface-bright shadow-md z-40 border-r border-surface-container-low p-4 gap-2">
+    <!-- Header -->
+    <div class="mb-8 px-4 py-2">
+      <h1 class="text-headline-md font-headline-md font-bold text-primary">Vokasi Pintar</h1>
+      <p class="text-label-sm font-label-sm text-on-surface-variant">Vocational Excellence</p>
+    </div>
+
+    <!-- Navigation Links -->
+    <div class="flex-1 flex flex-col gap-2 overflow-y-auto pr-2">
+      <a href="Dashboard_Siswa.html" class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-high rounded-xl transition-all duration-200 cursor-pointer active:scale-98">
+        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+        <span class="text-label-md font-label-md">Dashboard</span>
+      </a>
+      <a href="Learning_Center.html" class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-high rounded-xl transition-all duration-200 cursor-pointer active:scale-98">
+        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">school</span>
+        <span class="text-label-md font-label-md">Learning Center</span>
+      </a>
+      <a href="Dashboard_Instruktur.html" class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-high rounded-xl transition-all duration-200 cursor-pointer active:scale-98">
+        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">person_search</span>
+        <span class="text-label-md font-label-md">Instructor Panel</span>
+      </a>
+      <a href="Portal_Industri.html" class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-high rounded-xl transition-all duration-200 cursor-pointer active:scale-98">
+        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">business</span>
+        <span class="text-label-md font-label-md">Industry Portal</span>
+      </a>
+    </div>
+
+    <!-- CTA & Footer -->
+    <div class="mt-auto flex flex-col gap-4">
+      <button class="w-full bg-primary text-on-primary py-3 rounded-xl font-label-md hover:bg-primary-container transition-colors active:scale-98">
+        Resume Last Lesson
+      </button>
+      <div class="border-t border-surface-container pt-4 flex flex-col gap-2">
+        <a href="#" class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-high rounded-xl transition-all duration-200 cursor-pointer">
+          <span class="material-symbols-outlined">help</span>
+          <span class="text-label-md font-label-md">Help Center</span>
+        </a>
+        <a href="#" class="flex items-center gap-3 text-error px-4 py-3 hover:bg-error-container rounded-xl transition-all duration-200 cursor-pointer">
+          <span class="material-symbols-outlined">logout</span>
+          <span class="text-label-md font-label-md">Logout</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content Area -->
+  <main class="flex-1 ml-0 md:ml-64 flex flex-col h-screen overflow-hidden">
+    <!-- Top App Bar -->
+    <header class="w-full h-16 sticky top-0 z-50 bg-surface-container-lowest border-b border-outline-variant shadow-sm flex justify-between items-center px-margin-mobile md:px-margin-desktop">
+      <div class="flex items-center gap-4">
+        <button class="md:hidden text-on-surface-variant">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+        <span class="md:hidden text-headline-md font-headline-md text-primary font-bold">Vokasi Pintar</span>
+
+        <!-- Desktop Nav Links -->
+        <nav class="hidden md:flex gap-6 items-end h-full">
+          <a href="Learning_Center.html" class="text-on-surface-variant hover:text-primary transition-colors duration-200 text-body-md font-body-md pb-1 border-b-2 border-transparent h-full flex items-center">
+            Modules
+          </a>
+          <a href="Certificates.html" class="text-on-surface-variant hover:text-primary transition-colors duration-200 text-body-md font-body-md pb-1 border-b-2 border-transparent h-full flex items-center">
+            Certificates
+          </a>
+          <a href="Karir.html" class="text-primary border-b-2 border-primary pb-1 hover:text-primary transition-colors duration-200 text-body-md font-body-md h-full flex items-center font-semibold">
+            Career
+          </a>
+        </nav>
+      </div>
+
+      <!-- Actions Right -->
+      <div class="flex items-center gap-4">
+        <button class="text-on-surface-variant hover:text-primary transition-colors active:scale-95">
+          <span class="material-symbols-outlined">notifications</span>
+        </button>
+        <button class="text-on-surface-variant hover:text-primary transition-colors active:scale-95">
+          <span class="material-symbols-outlined">settings</span>
+        </button>
+        <div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant ml-2 cursor-pointer active:scale-95 transition-transform">
+          <img 
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0G-VOrUsz_gtUfs9AgvS6gmjyaCNQlVuAQpTMCgVs0l-_LjJd1T3Kzdb4761VDocbycUho1F_EJa8P_EJQ8gt-lclXpJnW2JpVx4iW-xWNdudvbfjjYtdlp40ezZqnyy0A35aK59T4UpyWE4-IT4SFiQProOlRwDIOmnMTcmGGEPpWjYkBgkGF4kor5uCA7CrboYgxbn4MspDED5qlVD-vxsAAXthNVdJ17VftO-PcHYGEt5jstm3ig" 
+            alt="User avatar" 
+            class="w-full h-full object-cover" 
+            data-alt="A professional headshot of a vocational student..."
+          />
+        </div>
+      </div>
+    </header>
+
+    <!-- Scrollable Canvas -->
+    <div class="flex-1 overflow-y-auto p-margin-mobile md:p-gutter scroll-smooth">
+      <div class="max-w-container-max mx-auto space-y-8 pb-20">
+        
+        <!-- Page Header -->
+        <div>
+          <h2 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg-mobile md:font-headline-lg text-on-surface mb-2">
+            Career Hub
+          </h2>
+          <p class="text-body-lg font-body-lg text-on-surface-variant">
+            Map your vocational skills to industry opportunities.
+          </p>
+        </div>
+
+        <!-- Bento Grid Layout for Dashboard -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          
+          <!-- Main Path (Spans 2 columns on large screens) -->
+          <div class="lg:col-span-2 space-y-6">
+            
+            <!-- Career Path Card -->
+            <section class="bg-surface-container-lowest rounded-2xl shadow-sm border border-surface-container p-6 relative overflow-hidden">
+              <div class="absolute top-0 right-0 w-64 h-64 bg-primary-container rounded-full mix-blend-multiply filter blur-3xl opacity-20 -translate-y-1/2 translate-x-1/4"></div>
+              
+              <div class="flex justify-between items-start mb-6 relative z-10">
+                <div>
+                  <h3 class="text-headline-md font-headline-md text-on-surface mb-1">Your Career Path</h3>
+                  <p class="text-body-md text-on-surface-variant">Automotive Diagnostics Technician</p>
+                </div>
+                <span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-label-sm font-label-sm uppercase tracking-wide">
+                  On Track
+                </span>
+              </div>
+
+              <div class="relative z-10 pt-4">
+                <!-- Stepper -->
+                <div class="flex flex-col md:flex-row gap-4 justify-between items-start md:items-center relative">
+                  <!-- Connecting Line (Desktop) -->
+                  <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-surface-variant -z-10 -translate-y-1/2"></div>
+                  <!-- Connecting Line (Mobile) -->
+                  <div class="md:hidden absolute left-4 top-0 w-0.5 h-full bg-surface-variant -z-10"></div>
+
+                  <!-- Step 1: Completed -->
+                  <div class="flex md:flex-col items-center gap-3 w-full md:w-1/3">
+                    <div class="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-on-secondary shadow-sm flex-shrink-0 z-10 ring-4 ring-surface-container-lowest">
+                      <span class="material-symbols-outlined text-sm" style="font-size: 16px;">check</span>
+                    </div>
+                    <div class="md:text-center">
+                      <p class="text-label-md font-label-md text-on-surface">Basic Mechanics</p>
+                      <p class="text-label-sm text-on-surface-variant">Completed Dec 2023</p>
+                    </div>
+                  </div>
+
+                  <!-- Step 2: In Progress -->
+                  <div class="flex md:flex-col items-center gap-3 w-full md:w-1/3">
+                    <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary shadow-sm flex-shrink-0 z-10 ring-4 ring-surface-container-lowest">
+                      <span class="material-symbols-outlined text-sm" style="font-size: 16px;">build</span>
+                    </div>
+                    <div class="md:text-center">
+                      <p class="text-label-md font-label-md text-on-surface text-primary">Advanced Diagnostics</p>
+                      <p class="text-label-sm text-on-surface-variant">Current Focus</p>
+                    </div>
+                  </div>
+
+                  <!-- Step 3: Locked -->
+                  <div class="flex md:flex-col items-center gap-3 w-full md:w-1/3 opacity-60">
+                    <div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant shadow-sm flex-shrink-0 z-10 ring-4 ring-surface-container-lowest">
+                      <span class="material-symbols-outlined text-sm" style="font-size: 16px;">lock</span>
+                    </div>
+                    <div class="md:text-center">
+                      <p class="text-label-md font-label-md text-on-surface">Hybrid Systems Certification</p>
+                      <p class="text-label-sm text-on-surface-variant">Prerequisite: Diagnostics</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Skill Gap Analysis -->
+            <section class="bg-surface-container-lowest rounded-2xl shadow-sm border border-surface-container p-6">
+              <div class="flex items-center gap-2 mb-6">
+                <span class="material-symbols-outlined text-primary">radar</span>
+                <h3 class="text-headline-md font-headline-md text-on-surface">Skill Gap Analysis</h3>
+              </div>
+
+              <div class="space-y-5">
+                <!-- Skill 1 -->
+                <div>
+                  <div class="flex justify-between text-label-md font-label-md mb-2">
+                    <span class="text-on-surface">OBD-II Scanning</span>
+                    <span class="text-primary">90%</span>
+                  </div>
+                  <div class="w-full bg-surface-variant h-2 rounded-full overflow-hidden">
+                    <div class="bg-secondary h-full rounded-full" style="width: 90%"></div>
+                  </div>
+                </div>
+
+                <!-- Skill 2 -->
+                <div>
+                  <div class="flex justify-between text-label-md font-label-md mb-2">
+                    <span class="text-on-surface">Electrical Schematics</span>
+                    <span class="text-primary">65%</span>
+                  </div>
+                  <div class="w-full bg-surface-variant h-2 rounded-full overflow-hidden">
+                    <div class="bg-primary h-full rounded-full" style="width: 65%"></div>
+                  </div>
+                  <p class="text-label-sm text-error mt-1 flex items-center gap-1">
+                    <span class="material-symbols-outlined" style="font-size: 14px;">warning</span>
+                    Needs improvement for Target Role
+                  </p>
+                </div>
+
+                <!-- Skill 3 -->
+                <div>
+                  <div class="flex justify-between text-label-md font-label-md mb-2">
+                    <span class="text-on-surface">EV Battery Maintenance</span>
+                    <span class="text-primary">20%</span>
+                  </div>
+                  <div class="w-full bg-surface-variant h-2 rounded-full overflow-hidden">
+                    <div class="bg-tertiary-container h-full rounded-full" style="width: 20%"></div>
+                  </div>
+                </div>
+              </div>
+
+              <button class="mt-6 w-full py-2 border border-outline rounded-lg text-label-md font-label-md text-on-surface hover:bg-surface-container-low transition-colors">
+                View Recommended Modules
+              </button>
+            </section>
+          </div>
+
+          <!-- Sidebar / Recommended Jobs -->
+          <div class="lg:col-span-1">
+            <section class="bg-surface-container-lowest rounded-2xl shadow-sm border border-surface-container p-6 h-full flex flex-col">
+              <h3 class="text-headline-md font-headline-md text-on-surface mb-6 flex items-center gap-2">
+                <span class="material-symbols-outlined text-tertiary-container">work</span>
+                Industry Matches
+              </h3>
+
+              <div class="flex-1 space-y-4 overflow-y-auto pr-2">
+                <!-- Job Card 1 -->
+                <div class="p-4 rounded-xl border border-surface-container-highest hover:shadow-md transition-shadow cursor-pointer group bg-surface-bright">
+                  <div class="flex justify-between items-start mb-2">
+                    <div class="w-10 h-10 rounded-lg bg-white border border-outline-variant flex items-center justify-center p-1 mb-2">
+                      <img 
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4RxT3oji2DlfaBbH83WTflMGgSEPawPC-9OcaEijFSoFK9uPTDCmy_FvW1eVknyx6yZPW3IMJB_OJ0PhpgZdeygVf-vYoBMi8-9zdIQfMz5004PT9rdYFg_sc36_y-qNt1beJMRtk1J8FbVsYAjcV8OJYV-wZNFs68chTRtxxBsThrfxDzNPMF6tDBbWNUXdRsHQowGenIF0j1dbik9JnQhw7heHuxoAsjhhpyVKxOKgH840Vqul9DQ" 
+                        alt="Company Logo" 
+                        class="w-full h-full object-contain"
+                      />
+                    </div>
+                    <span class="bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded text-label-sm font-label-sm">85% Match</span>
+                  </div>
+                  <h4 class="text-label-md font-label-md text-on-surface group-hover:text-primary transition-colors">Diagnostic Technician</h4>
+                  <p class="text-label-sm text-on-surface-variant mb-3">Astra Motor • Jakarta (On-site)</p>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="px-2 py-1 bg-surface-container-low text-on-surface-variant rounded text-[10px] font-medium border border-outline-variant">OBD-II</span>
+                    <span class="px-2 py-1 bg-surface-container-low text-on-surface-variant rounded text-[10px] font-medium border border-outline-variant">Troubleshooting</span>
+                  </div>
+                </div>
+
+                <!-- Job Card 2 -->
+                <div class="p-4 rounded-xl border border-surface-container-highest hover:shadow-md transition-shadow cursor-pointer group bg-surface-bright">
+                  <div class="flex justify-between items-start mb-2">
+                    <div class="w-10 h-10 rounded-lg bg-white border border-outline-variant flex items-center justify-center p-1 mb-2">
+                      <img 
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVDe_0Of3C9Ga6qyZom4ICor1vxFG2UAzz1HMnpbxKWp0nJ1dAFqTswTnFuuTMumA6DHp44RHc5nJqb2cq2lhkN91mkWB_YMVqB15kUHjn8Cp4z5MFIYiixhGpXJeOE2s_xoVoQBmswEmzAysCNX0-RhlUsNz56CH0rTgeR4yZXKpGQKXCDbhD0zLqxdPBTy6ZqLLxW1qS70woFrD3aKqEPmel-Ot_h07gO6WPI-ZnGepKx-SbBWdduA" 
+                        alt="Company Logo" 
+                        class="w-full h-full object-contain"
+                      />
+                    </div>
+                    <span class="bg-surface-container-high text-on-surface px-2 py-0.5 rounded text-label-sm font-label-sm">62% Match</span>
+                  </div>
+                  <h4 class="text-label-md font-label-md text-on-surface group-hover:text-primary transition-colors">Junior EV Mechanic</h4>
+                  <p class="text-label-sm text-on-surface-variant mb-3">VoltAsia • Bandung (Hybrid)</p>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="px-2 py-1 bg-surface-container-low text-on-surface-variant rounded text-[10px] font-medium border border-outline-variant">Basic Electrical</span>
+                    <span class="px-2 py-1 bg-surface-container-low text-error rounded text-[10px] font-medium border border-error-container">Requires: EV Battery Cert</span>
+                  </div>
+                </div>
+              </div>
+
+              <button class="mt-6 w-full bg-primary text-on-primary py-3 rounded-xl font-label-md hover:bg-primary-container transition-colors shadow-sm">
+                Explore All Opportunities
+              </button>
+            </section>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>

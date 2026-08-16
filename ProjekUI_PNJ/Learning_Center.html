@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Center</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Material Symbols -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#0061A4',
+                        'on-primary': '#FFFFFF',
+                        'surface': '#FEF8FD',
+                        'on-surface': '#1D1B20',
+                        'surface-variant': '#E1E2EC',
+                        'on-surface-variant': '#44474E',
+                        'outline': '#74777F',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface flex min-h-screen">
+
+    <!-- Sidebar / Aside -->
+    <aside class="w-64 bg-slate-50 border-r border-slate-200 flex flex-col justify-between p-4 shrink-0">
+        <div class="flex flex-col gap-6">
+            <!-- Brand Logo -->
+            <div class="flex items-center gap-3 px-3 py-2">
+                <span class="material-symbols-outlined text-primary text-3xl">school</span>
+                <span class="font-bold text-xl text-primary">EduPlatform</span>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="flex flex-col gap-1">
+                <!-- Dashboard Siswa -->
+                <a href="Dashboard_Siswa.html" class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant transition-colors group">
+                    <span class="material-symbols-outlined group-hover:text-primary transition-colors">dashboard</span>
+                    <span class="font-medium">Dashboard</span>
+                </a>
+
+                <!-- Learning Center (AKTIF) -->
+                <a href="Learning_Center.html" class="flex items-center gap-3 px-3 py-3 bg-surface-variant rounded-lg text-primary font-bold border-r-4 border-primary transition-all duration-150">
+                    <span class="material-symbols-outlined text-primary">school</span>
+                    <span class="font-medium">Learning Center</span>
+                </a>
+
+                <!-- Instructor Panel -->
+                <a href="Dashboard_Instruktur.html" class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant transition-colors group">
+                    <span class="material-symbols-outlined group-hover:text-primary transition-colors">engineering</span>
+                    <span class="font-medium">Instructor Panel</span>
+                </a>
+
+                <!-- Industry Portal -->
+                <a href="Portal_Industri.html" class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant transition-colors group">
+                    <span class="material-symbols-outlined group-hover:text-primary transition-colors">handshake</span>
+                    <span class="font-medium">Industry Portal</span>
+                </a>
+            </nav>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 p-8 overflow-y-auto">
+        <!-- Header -->
+        <header class="mb-8">
+            <h1 class="text-3xl font-bold text-on-surface">Learning Center</h1>
+            <p class="text-on-surface-variant mt-1">Pilih modul pembelajaran dan tingkatkan keterampilan coding kamu.</p>
+        </header>
+
+        <!-- Course Grid -->
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Course Card 1 -->
+            <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <div class="h-36 bg-blue-100 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-6xl text-primary">code</span>
+                </div>
+                <div class="p-5">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-primary bg-blue-50 px-2 py-1 rounded">Web Development</span>
+                    <h2 class="text-xl font-bold mt-2">Dasar HTML & CSS Layout</h2>
+                    <p class="text-sm text-on-surface-variant mt-1">Pelajari struktur dasar halaman web, Flexbox, dan Grid layout.</p>
+                    <div class="mt-4 pt-4 border-t border-slate-100 flex justify-between items-center">
+                        <span class="text-xs text-slate-500">12 Modul • Beginner</span>
+                        <a href="#" class="px-4 py-2 bg-primary text-white text-sm font-semibold rounded-lg hover:bg-blue-700 transition-colors">Mulai</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Card 2 -->
+            <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <div class="h-36 bg-emerald-100 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-6xl text-emerald-600">terminal</span>
+                </div>
+                <div class="p-5">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2 py-1 rounded">Programming</span>
+                    <h2 class="text-xl font-bold mt-2">Pemrograman C++ Dasar</h2>
+                    <p class="text-sm text-on-surface-variant mt-1">Memahami logika dasar, variabel, percabangan, dan perulangan C++.</p>
+                    <div class="mt-4 pt-4 border-t border-slate-100 flex justify-between items-center">
+                        <span class="text-xs text-slate-500">8 Modul • Beginner</span>
+                        <a href="#" class="px-4 py-2 bg-primary text-white text-sm font-semibold rounded-lg hover:bg-blue-700 transition-colors">Mulai</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Card 3 -->
+            <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <div class="h-36 bg-purple-100 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-6xl text-purple-600">database</span>
+                </div>
+                <div class="p-5">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-purple-700 bg-purple-50 px-2 py-1 rounded">Database</span>
+                    <h2 class="text-xl font-bold mt-2">Basis Data Relasional & SQL</h2>
+                    <p class="text-sm text-on-surface-variant mt-1">Konsep ERD, pembuatan tabel, dan kueri SQL dasar hingga lanjut.</p>
+                    <div class="mt-4 pt-4 border-t border-slate-100 flex justify-between items-center">
+                        <span class="text-xs text-slate-500">10 Modul • Intermediate</span>
+                        <a href="#" class="px-4 py-2 bg-primary text-white text-sm font-semibold rounded-lg hover:bg-blue-700 transition-colors">Mulai</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>

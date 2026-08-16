@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruang Belajar - Vokasi Pintar</title>
+
+    <!-- Tailwind CSS & Plugins -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!-- Google Fonts & Material Symbols -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Configuration -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "inverse-surface": "#27313f",
+                        "outline": "#757684",
+                        "on-tertiary-fixed": "#2a1700",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "tertiary-fixed": "#ffddb8",
+                        "on-background": "#121c2a",
+                        "secondary": "#006c49",
+                        "surface": "#f8f9ff",
+                        "on-primary-container": "#a8b8ff",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "secondary-container": "#6cf8bb",
+                        "on-primary-fixed": "#001453",
+                        "surface-container-high": "#dee9fc",
+                        "secondary-fixed": "#6ffbbe",
+                        "primary": "#00288e",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#4edea3",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#c4c5d5",
+                        "on-secondary-container": "#00714d",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-variant": "#d9e3f6",
+                        "background": "#f8f9ff",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "tertiary-container": "#6b4200",
+                        "surface-container-low": "#eff4ff",
+                        "primary-fixed": "#dde1ff",
+                        "tertiary": "#4c2e00",
+                        "on-primary-fixed-variant": "#173bab",
+                        "surface-dim": "#d0dbed",
+                        "on-surface": "#121c2a",
+                        "on-secondary-fixed": "#002113",
+                        "primary-fixed-dim": "#b8c4ff",
+                        "on-surface-variant": "#444653",
+                        "error": "#ba1a1a",
+                        "primary-container": "#1e40af",
+                        "inverse-primary": "#b8c4ff",
+                        "surface-container": "#e6eeff",
+                        "on-tertiary-container": "#ffa929",
+                        "surface-tint": "#3755c3",
+                        "on-secondary-fixed-variant": "#005236",
+                        "surface-bright": "#f8f9ff",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#d9e3f6"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "margin-desktop": "32px",
+                        "margin-mobile": "16px",
+                        "base": "8px"
+                    },
+                    fontFamily: {
+                        "label-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    },
+                    fontSize: {
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom scrollbar for module list */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: var(--color-outline-variant, #c4c5d5);
+            border-radius: 20px;
+        }
+        .custom-scrollbar:hover::-webkit-scrollbar-thumb {
+            background-color: var(--color-outline, #757684);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md antialiased h-screen overflow-hidden flex flex-col">
+
+    <!-- TopAppBar -->
+    <header class="bg-surface shadow-sm docked full-width top-0 z-40">
+        <div class="flex justify-between items-center w-full px-gutter h-16 md:pl-72">
+            <div class="flex items-center gap-4">
+                <button aria-label="Toggle Sidebar" class="md:hidden text-on-surface-variant hover:text-primary transition-colors focus:outline-none">
+                    <span class="material-symbols-outlined" data-icon="menu">menu</span>
+                </button>
+                <div class="font-headline-md text-headline-md font-bold text-primary">Vokasi Pintar</div>
+            </div>
+
+            <nav class="hidden md:flex items-center gap-6">
+                <a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-md text-label-md hover:text-primary transition-colors" href="/learning-center">Learning Center</a>
+                <a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors" href="/modules">Modules</a>
+                <a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors" href="/certificates">Certificates</a>
+                <a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors" href="/career">Career</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <button aria-label="Notifications" class="text-on-surface-variant hover:text-primary transition-colors focus:outline-none">
+                    <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+                </button>
+                <button aria-label="Apps" class="text-on-surface-variant hover:text-primary transition-colors focus:outline-none">
+                    <span class="material-symbols-outlined" data-icon="apps">apps</span>
+                </button>
+                <img class="w-8 h-8 rounded-full object-cover border border-outline-variant" 
+                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-WBxekGEkC21opccNZ68Yebd5STbxAm2HkqCw4u2g7o0562Wwcjbs9mg347NvwDWikUxYGwc-n2MqQ9v8ldRjvcSaCo0ymLPRdDmZvCClFPvWi4owG54brqoQ7SB8VqggYCDDzu3HojrctMGwGX5fNWIC8NekZAy2C9JFqv1p678OXz3z7lCzCSL_7SlF4IoWQOi1lsc2fp_-BrUgDwII2VNJfLp5QMXkP_WZg4TcKVZAJHZTxIJDlA" 
+                     alt="Budi Prasetyo Profile">
+            </div>
+        </div>
+    </header>
+
+    <div class="flex flex-1 overflow-hidden relative">
+
+        <!-- SideNavBar -->
+        <aside aria-label="Sidebar Navigation" class="bg-surface-container-low shadow-sm h-full w-64 fixed left-0 top-0 hidden md:flex flex-col z-50 pt-16">
+            <div class="p-gutter border-b border-outline-variant flex items-center gap-3">
+                <img class="w-10 h-10 rounded-full object-cover border border-outline-variant" 
+                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuAka3vXCTMcGySX33ZoNqAm0UZncBGSccTNJxP0zz_AgnGUyBu1pKA9_GGdnTbkx0T9YTA4WNJMmFo0-pwkmSyraDslbG1DSWo9xJsztiS0NzYowiPbZx-NCTmHYWjXM11En6lu6wEMtgUoMJ-N9x7dkgyLwjGN1-6bgVn6guK11QsRx-LUmwY6RJZCIgzyGElbrJ3CFziUXh9u4nYNq9ko9sP5iexvu9963mgVKtS6eXx5q6wCipmE6Q" 
+                     alt="Budi Prasetyo Profile">
+                <div>
+                    <h3 class="font-label-md text-label-md text-on-surface font-semibold">Budi Prasetyo</h3>
+                    <p class="font-label-sm text-label-sm text-on-surface-variant">Vocational Student</p>
+                </div>
+            </div>
+
+            <nav class="flex-1 overflow-y-auto flex flex-col h-full py-base gap-2 px-4 mt-4">
+                <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-variant transition-colors group" href="/dashboard">
+                    <span class="material-symbols-outlined group-hover:text-primary" data-icon="dashboard">dashboard</span>
+                    <span class="font-label-md text-label-md font-medium">Dashboard</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-surface-variant text-primary font-bold border-l-4 border-primary shadow-sm group scale-95 transition-transform duration-150" href="/learning-center">
+                    <span class="material-symbols-outlined text-primary" data-icon="school" data-weight="fill">school</span>
+                    <span class="font-label-md text-label-md">Learning Center</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-variant transition-colors group" href="/instructor">
+                    <span class="material-symbols-outlined group-hover:text-primary" data-icon="engineering">engineering</span>
+                    <span class="font-label-md text-label-md font-medium">Instructor Panel</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-variant transition-colors group" href="/industry">
+                    <span class="material-symbols-outlined group-hover:text-primary" data-icon="handshake">handshake</span>
+                    <span class="font-label-md text-label-md font-medium">Industry Portal</span>
+                </a>
+            </nav>
+
+            <nav class="p-4 flex flex-col gap-2">
+                <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-variant transition-colors group" href="#">
+                    <span class="material-symbols-outlined group-hover:text-primary" data-icon="settings">settings</span>
+                    <span class="font-label-md text-label-md font-medium">Settings</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-variant transition-colors group" href="#">
+                    <span class="material-symbols-outlined group-hover:text-primary" data-icon="help">help</span>
+                    <span class="font-label-md text-label-md font-medium">Support</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 overflow-y-auto md:ml-64 bg-background w-full">
+            <div class="max-w-[1440px] mx-auto p-margin-mobile md:p-gutter flex flex-col lg:flex-row gap-gutter h-full min-h-max">
+                
+                <!-- Left Column: Video & Main Content -->
+                <div class="flex-1 flex flex-col gap-6 lg:max-w-4xl w-full">
+                    
+                    <!-- Breadcrumbs -->
+                    <nav aria-label="Breadcrumb" class="flex text-on-surface-variant font-label-sm text-label-sm">
+                        <ol class="inline-flex items-center space-x-1 md:space-x-2">
+                            <li class="inline-flex items-center hover:text-primary cursor-pointer transition-colors">Modules</li>
+                            <li>
+                                <div class="flex items-center">
+                                    <span class="material-symbols-outlined text-sm mx-1" data-icon="chevron_right">chevron_right</span>
+                                    <span class="hover:text-primary cursor-pointer transition-colors">Web Development</span>
+                                </div>
+                            </li>
+                            <li aria-current="page">
+                                <div class="flex items-center">
+                                    <span class="material-symbols-outlined text-sm mx-1" data-icon="chevron_right">chevron_right</span>
+                                    <span class="text-primary font-medium">Dasar Javascript Lanjutan</span>
+                                </div>
+                            </li>
+                        </ol>
+                    </nav>
+
+                    <!-- Video Player Container -->
+                    <div class="bg-surface-container-lowest rounded-2xl shadow-sm border border-outline-variant overflow-hidden flex flex-col">
+                        <div class="relative w-full aspect-video bg-inverse-surface group">
+                            <!-- Video Placeholder -->
+                            <div class="absolute inset-0 bg-cover bg-center opacity-80" 
+                                 style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBQRH2EJepV4UL6d_Ku0CqdJbdw3c0qZd91wNZ__2qORd6uumnTCYunweP5WnxsAKPuDRx7pfiNWq-drvXrk4P_rzwy04tkVHUenmz6s-2g7uVWwIatE_1u_TS2ixyDasFKV0jKgEzyRmyiWqzEbtdIQRHBCm5UIbEyADkozHDCFWui7h8o3kXQyMt2sPy5vuQGbfDMFCb72VurjQOAYW0Q1B7nRhPYUjSWrAeYU58pTPISgQq3yYkhzg')"></div>
+                            
+                            <!-- Large Play Button Overlay -->
+                            <div class="absolute inset-0 flex items-center justify-center bg-inverse-surface/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer">
+                                <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
+                                    <span class="material-symbols-outlined text-on-primary text-4xl" data-icon="play_arrow" data-weight="fill">play_arrow</span>
+                                </div>
+                            </div>
+
+                            <!-- Video Controls -->
+                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-inverse-surface/90 to-transparent p-4 pt-12 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <!-- Scrubber -->
+                                <div class="w-full h-1 bg-surface-variant/30 rounded-full cursor-pointer relative">
+                                    <div class="absolute top-0 left-0 h-full bg-primary rounded-full w-1/3"></div>
+                                    <div class="absolute top-1/2 left-1/3 -translate-y-1/2 -translate-x-1/2 w-3 h-3 bg-white rounded-full shadow"></div>
+                                </div>
+
+                                <!-- Buttons -->
+                                <div class="flex justify-between items-center text-on-primary">
+                                    <div class="flex items-center gap-4">
+                                        <button class="hover:text-primary-fixed transition-colors focus:outline-none"><span class="material-symbols-outlined" data-icon="play_arrow">play_arrow</span></button>
+                                        <button class="hover:text-primary-fixed transition-colors focus:outline-none"><span class="material-symbols-outlined" data-icon="volume_up">volume_up</span></button>
+                                        <span class="font-label-sm text-label-sm">04:12 / 12:45</span>
+                                    </div>
+                                    <div class="flex items-center gap-4">
+                                        <button class="hover:text-primary-fixed transition-colors focus:outline-none"><span class="material-symbols-outlined" data-icon="closed_caption">closed_caption</span></button>
+                                        <button class="hover:text-primary-fixed transition-colors focus:outline-none"><span class="material-symbols-outlined" data-icon="settings">settings</span></button>
+                                        <button class="hover:text-primary-fixed transition-colors focus:outline-none"><span class="material-symbols-outlined" data-icon="fullscreen">fullscreen</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-6 border-b border-outline-variant">
+                            <h1 class="font-headline-lg text-headline-lg font-bold text-on-surface mb-2">Dasar Javascript Lanjutan</h1>
+                            <p class="font-body-md text-body-md text-on-surface-variant">Memahami konsep asynchronous, promises, dan async/await untuk membangun aplikasi web modern yang responsif dan efisien.</p>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Tabs Content (Bento Style layout for related info) -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        
+                        <!-- Quiz Section (Takes up 2 columns) -->
+                        <div class="md:col-span-2 bg-surface-container-lowest rounded-2xl shadow-sm border border-outline-variant p-6 flex flex-col">
+                            <div class="flex justify-between items-center mb-6 border-b border-outline-variant pb-4">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+                                        <span class="material-symbols-outlined text-sm" data-icon="quiz">quiz</span>
+                                    </div>
+                                    <h2 class="font-headline-md text-headline-md font-semibold text-on-surface">Knowledge Check</h2>
+                                </div>
+                                <div class="flex items-center gap-2 bg-error-container text-on-error-container px-3 py-1 rounded-full font-label-md text-label-md">
+                                    <span class="material-symbols-outlined text-sm" data-icon="timer">timer</span>
+                                    <span>05:00</span>
+                                </div>
+                            </div>
+
+                            <div class="flex-1 flex flex-col gap-4">
+                                <p class="font-body-lg text-body-lg text-on-surface font-medium">Manakah dari berikut ini yang BUKAN merupakan status dari sebuah Promise di JavaScript?</p>
+                                <div class="flex flex-col gap-3 mt-2">
+                                    <label class="flex items-center gap-3 p-4 rounded-xl border border-outline-variant hover:border-primary cursor-pointer transition-colors bg-surface-bright">
+                                        <input class="w-5 h-5 text-primary border-outline-variant focus:ring-primary focus:ring-offset-surface-bright" name="quiz1" type="radio">
+                                        <span class="font-body-md text-body-md text-on-surface">Pending</span>
+                                    </label>
+                                    <label class="flex items-center gap-3 p-4 rounded-xl border-2 border-primary bg-surface-container-low cursor-pointer transition-colors shadow-sm">
+                                        <input checked class="w-5 h-5 text-primary border-outline-variant focus:ring-primary focus:ring-offset-surface-container-low" name="quiz1" type="radio">
+                                        <span class="font-body-md text-body-md text-on-surface font-medium">Waiting</span>
+                                    </label>
+                                    <label class="flex items-center gap-3 p-4 rounded-xl border border-outline-variant hover:border-primary cursor-pointer transition-colors bg-surface-bright">
+                                        <input class="w-5 h-5 text-primary border-outline-variant focus:ring-primary focus:ring-offset-surface-bright" name="quiz1" type="radio">
+                                        <span class="font-body-md text-body-md text-on-surface">Fulfilled</span>
+                                    </label>
+                                    <label class="flex items-center gap-3 p-4 rounded-xl border border-outline-variant hover:border-primary cursor-pointer transition-colors bg-surface-bright">
+                                        <input class="w-5 h-5 text-primary border-outline-variant focus:ring-primary focus:ring-offset-surface-bright" name="quiz1" type="radio">
+                                        <span class="font-body-md text-body-md text-on-surface">Rejected</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 flex justify-end">
+                                <button class="bg-primary text-on-primary hover:bg-primary-container hover:text-on-primary-container px-6 py-3 rounded-lg font-label-md text-label-md transition-colors shadow-sm flex items-center gap-2 min-h-[44px]">
+                                    Submit Answer
+                                    <span class="material-symbols-outlined text-sm" data-icon="send">send</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Resources Section -->
+                        <div class="bg-surface-container-lowest rounded-2xl shadow-sm border border-outline-variant p-6 flex flex-col">
+                            <div class="flex items-center gap-2 mb-6 border-b border-outline-variant pb-4">
+                                <div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center text-primary">
+                                    <span class="material-symbols-outlined text-sm" data-icon="folder_zip">folder_zip</span>
+                                </div>
+                                <h2 class="font-headline-md text-headline-md font-semibold text-on-surface">Resources</h2>
+                            </div>
+
+                            <div class="flex flex-col gap-3">
+                                <a class="flex items-start gap-3 p-3 rounded-lg hover:bg-surface-variant transition-colors group" href="#">
+                                    <span class="material-symbols-outlined text-error mt-0.5" data-icon="picture_as_pdf">picture_as_pdf</span>
+                                    <div class="flex-1">
+                                        <p class="font-label-md text-label-md text-on-surface group-hover:text-primary transition-colors">Slide Presentasi Lanjutan</p>
+                                        <p class="font-label-sm text-label-sm text-on-surface-variant">PDF • 2.4 MB</p>
+                                    </div>
+                                    <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" data-icon="download">download</span>
+                                </a>
+
+                                <a class="flex items-start gap-3 p-3 rounded-lg hover:bg-surface-variant transition-colors group" href="#">
+                                    <span class="material-symbols-outlined text-primary mt-0.5" data-icon="data_object">data_object</span>
+                                    <div class="flex-1">
+                                        <p class="font-label-md text-label-md text-on-surface group-hover:text-primary transition-colors">Source Code Latihan</p>
+                                        <p class="font-label-sm text-label-sm text-on-surface-variant">ZIP • 1.1 MB</p>
+                                    </div>
+                                    <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" data-icon="download">download</span>
+                                </a>
+
+                                <a class="flex items-start gap-3 p-3 rounded-lg hover:bg-surface-variant transition-colors group" href="#">
+                                    <span class="material-symbols-outlined text-secondary mt-0.5" data-icon="description">description</span>
+                                    <div class="flex-1">
+                                        <p class="font-label-md text-label-md text-on-surface group-hover:text-primary transition-colors">Cheat Sheet Async/Await</p>
+                                        <p class="font-label-sm text-label-sm text-on-surface-variant">PDF • 800 KB</p>
+                                    </div>
+                                    <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" data-icon="download">download</span>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Right Column: Module Navigation Sidebar (Desktop sticky) -->
+                <div class="w-full lg:w-80 flex-shrink-0 flex flex-col h-[calc(100vh-64px-64px)] lg:sticky lg:top-24">
+                    <div class="bg-surface-container-lowest rounded-2xl shadow-sm border border-outline-variant flex flex-col h-full overflow-hidden">
+                        
+                        <!-- Module Header -->
+                        <div class="p-5 border-b border-outline-variant bg-surface-bright">
+                            <h2 class="font-headline-md text-headline-md font-semibold text-on-surface mb-3">Web Development Core</h2>
+                            
+                            <!-- Progress Bar -->
+                            <div class="flex flex-col gap-1">
+                                <div class="flex justify-between items-center font-label-sm text-label-sm">
+                                    <span class="text-on-surface-variant">Progress Modul</span>
+                                    <span class="text-secondary font-semibold">60%</span>
+                                </div>
+                                <div class="w-full h-2 bg-surface-variant rounded-full overflow-hidden">
+                                    <div class="h-full bg-secondary rounded-full" style="width: 60%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Lesson List -->
+                        <div class="flex-1 overflow-y-auto p-2 flex flex-col gap-1 custom-scrollbar">
+                            <!-- Section 1 -->
+                            <div class="py-2 px-3">
+                                <h3 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">1. Fundamental</h3>
+                            </div>
+                            <a class="flex items-start gap-3 p-3 rounded-lg hover:bg-surface-variant transition-colors group" href="#">
+                                <div class="w-6 h-6 rounded-full bg-secondary-container flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <span class="material-symbols-outlined text-[14px] text-on-secondary-container font-bold" data-icon="check">check</span>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-label-md text-label-md text-on-surface line-through opacity-70">Pengenalan Sintaks Modern</p>
+                                    <div class="flex items-center gap-1 text-on-surface-variant opacity-70 font-label-sm text-label-sm mt-1">
+                                        <span class="material-symbols-outlined text-[12px]" data-icon="play_circle">play_circle</span>
+                                        <span>08:45</span>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="flex items-start gap-3 p-3 rounded-lg hover:bg-surface-variant transition-colors group" href="#">
+                                <div class="w-6 h-6 rounded-full bg-secondary-container flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <span class="material-symbols-outlined text-[14px] text-on-secondary-container font-bold" data-icon="check">check</span>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-label-md text-label-md text-on-surface line-through opacity-70">Arrow Functions &amp; Scope</p>
+                                    <div class="flex items-center gap-1 text-on-surface-variant opacity-70 font-label-sm text-label-sm mt-1">
+                                        <span class="material-symbols-outlined text-[12px]" data-icon="play_circle">play_circle</span>
+                                        <span>12:20</span>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <!-- Section 2 -->
+                            <div class="py-2 px-3 mt-2 border-t border-outline-variant/30">
+                                <h3 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">2. Asynchronous Programming</h3>
+                            </div>
+                            <a class="flex items-start gap-3 p-3 rounded-lg bg-surface-container-low border border-primary/20 shadow-sm relative group" href="#">
+                                <div class="absolute left-0 top-2 bottom-2 w-1 bg-primary rounded-r-md"></div>
+                                <div class="w-6 h-6 flex items-center justify-center flex-shrink-0 mt-0.5 ml-1">
+                                    <div class="w-2.5 h-2.5 bg-primary rounded-full animate-pulse"></div>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-label-md text-label-md text-primary font-bold">Dasar Javascript Lanjutan</p>
+                                    <div class="flex items-center gap-1 text-primary-container font-label-sm text-label-sm mt-1">
+                                        <span class="material-symbols-outlined text-[12px]" data-icon="play_circle">play_circle</span>
+                                        <span>12:45 • Sedang dipelajari</span>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="flex items-start gap-3 p-3 rounded-lg hover:bg-surface-variant transition-colors group opacity-60 pointer-events-none" href="#">
+                                <div class="w-6 h-6 rounded-full border-2 border-outline-variant flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <span class="material-symbols-outlined text-[14px] text-outline-variant" data-icon="lock">lock</span>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-label-md text-label-md text-on-surface">Fetch API &amp; REST</p>
+                                    <div class="flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm mt-1">
+                                        <span class="material-symbols-outlined text-[12px]" data-icon="play_circle">play_circle</span>
+                                        <span>15:30</span>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <!-- Section 3 -->
+                            <div class="py-2 px-3 mt-2 border-t border-outline-variant/30">
+                                <h3 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">3. Final Project</h3>
+                            </div>
+                            <a class="flex items-start gap-3 p-3 rounded-lg hover:bg-surface-variant transition-colors group opacity-60 pointer-events-none" href="#">
+                                <div class="w-6 h-6 rounded-full border-2 border-outline-variant flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <span class="material-symbols-outlined text-[14px] text-outline-variant" data-icon="lock">lock</span>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-label-md text-label-md text-on-surface">Membangun Dashboard Cuaca</p>
+                                    <div class="flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm mt-1">
+                                        <span class="material-symbols-outlined text-[12px]" data-icon="code">code</span>
+                                        <span>Tugas Praktik</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Footer -->
+            <footer class="bg-surface-container-lowest dark:bg-inverse-surface border-t border-outline-variant w-full py-8 mt-12">
+                <div class="flex flex-col md:flex-row justify-between items-center px-gutter gap-4 max-w-[1440px] mx-auto">
+                    <div class="font-label-md text-label-md font-bold text-on-surface">
+                        © 2024 Vokasi Pintar LMS. All rights reserved.
+                    </div>
+                    <nav class="flex flex-wrap gap-4 items-center justify-center">
+                        <a class="text-on-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors font-body-md text-body-md" href="#">Privacy Policy</a>
+                        <a class="text-on-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors font-body-md text-body-md" href="#">Terms of Service</a>
+                        <a class="text-on-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors font-body-md text-body-md" href="#">Vocational Standards</a>
+                        <a class="text-on-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors font-body-md text-body-md" href="#">Certification Seals</a>
+                    </nav>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+</body>
+</html>

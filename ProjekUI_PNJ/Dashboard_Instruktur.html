@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Instructor Dashboard - Vokasi Pintar</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  
+  <!-- Material Symbols -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  
+  <!-- Theme Configuration -->
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-surface": "#27313f",
+            "outline": "#757684",
+            "on-tertiary-fixed": "#2a1700",
+            "on-tertiary": "#ffffff",
+            "on-tertiary-fixed-variant": "#653e00",
+            "tertiary-fixed": "#ffddb8",
+            "on-background": "#121c2a",
+            "secondary": "#006c49",
+            "surface": "#f8f9ff",
+            "on-primary-container": "#a8b8ff",
+            "tertiary-fixed-dim": "#ffb95f",
+            "secondary-container": "#6cf8bb",
+            "on-primary-fixed": "#001453",
+            "surface-container-high": "#dee9fc",
+            "secondary-fixed": "#6ffbbe",
+            "primary": "#00288e",
+            "on-error-container": "#93000a",
+            "secondary-fixed-dim": "#4edea3",
+            "on-primary": "#ffffff",
+            "error-container": "#ffdad6",
+            "outline-variant": "#c4c5d5",
+            "on-secondary-container": "#00714d",
+            "surface-container-lowest": "#ffffff",
+            "surface-variant": "#d9e3f6",
+            "background": "#f8f9ff",
+            "on-secondary": "#ffffff",
+            "inverse-on-surface": "#eaf1ff",
+            "tertiary-container": "#6b4200",
+            "surface-container-low": "#eff4ff",
+            "primary-fixed": "#dde1ff",
+            "tertiary": "#4c2e00",
+            "on-primary-fixed-variant": "#173bab",
+            "surface-dim": "#d0dbed",
+            "on-surface": "#121c2a",
+            "on-secondary-fixed": "#002113",
+            "primary-fixed-dim": "#b8c4ff",
+            "on-surface-variant": "#444653",
+            "error": "#ba1a1a",
+            "primary-container": "#1e40af",
+            "inverse-primary": "#b8c4ff",
+            "surface-container": "#e6eeff",
+            "on-tertiary-container": "#ffa929",
+            "surface-tint": "#3755c3",
+            "on-secondary-fixed-variant": "#005236",
+            "surface-bright": "#f8f9ff",
+            "on-error": "#ffffff",
+            "surface-container-highest": "#d9e3f6"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "container-max": "1280px",
+            "gutter": "24px",
+            "margin-desktop": "32px",
+            "margin-mobile": "16px",
+            "base": "8px"
+          },
+          "fontFamily": {
+            "label-sm": ["Inter"],
+            "label-md": ["Inter"],
+            "display-lg": ["Inter"],
+            "body-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-lg-mobile": ["Inter"],
+            "headline-md": ["Inter"],
+            "headline-lg": ["Inter"]
+          },
+          "fontSize": {
+            "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+            "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+            "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .material-symbols-outlined.fill {
+      font-variation-settings: 'FILL' 1;
+    }
+    
+    /* Ambient shadow for cards */
+    .ambient-shadow {
+      box-shadow: 0px 1px 3px rgba(0,0,0,0.1), 0px 4px 6px -1px rgba(0, 40, 142, 0.05);
+    }
+    .ambient-shadow:hover {
+      box-shadow: 0px 10px 15px -3px rgba(0, 40, 142, 0.1);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md antialiased overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+
+  <!-- TopAppBar -->
+  <header class="fixed docked full-width top-0 z-40 bg-surface shadow-sm flex justify-between items-center w-full px-gutter h-16 md:pl-72 transition-all duration-300">
+    <!-- Mobile Menu Button & Brand -->
+    <div class="flex items-center gap-4">
+      <button class="md:hidden text-on-surface-variant p-2 -ml-2 rounded-full hover:bg-surface-variant transition-colors">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+      <span class="font-headline-md text-headline-md font-bold text-primary md:hidden">Vokasi Pintar</span>
+      
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden md:flex items-center gap-8 ml-4">
+        <a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors py-5 border-b-2 border-transparent hover:border-primary" href="Katalog_Kursus.html">Modules</a>
+        <a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors py-5 border-b-2 border-transparent hover:border-primary" href="Certificates.html">Certificates</a>
+        <a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors py-5 border-b-2 border-transparent hover:border-primary" href="Karir.html">Career</a>
+      </nav>
+    </div>
+    
+    <!-- Trailing Actions -->
+    <div class="flex items-center gap-2">
+      <button class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-variant rounded-full transition-colors relative">
+        <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+        <span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+      </button>
+      <button class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-variant rounded-full transition-colors mr-2">
+        <span class="material-symbols-outlined" data-icon="apps">apps</span>
+      </button>
+      <img alt="Budi Prasetyo" class="w-8 h-8 rounded-full object-cover border border-outline-variant/50" data-alt="A professional, well-lit portrait photograph of an Indonesian male vocational student. High clarity, bright light-mode aesthetic, corporate modernism style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIG6bnhi1u996QeWMJQbosXCAAiwQ_P_oPhbaWLZQeQm2qYKlPOS7byUAJBpXe6Xudd6cJHC0fD9BnfD3mQ_OpRIYgowfDU2hYR4NBXnQQtzqa2oSh7wh5KGyLDvwseiVyKk9KvPxwlpppn5wOsrTaBcOS4f7j03zCBbcxbXCh_9MGYPyNUhwMIUElHTLjjZnHicUcgbdyh6X6-ca5c6kWzQ5wxYlAzDHY_zO2PZ-7XtPJkW31r7AHHg">
+    </div>
+  </header>
+
+  <!-- SideNavBar -->
+  <aside class="bg-surface-container-low shadow-sm h-screen w-64 fixed left-0 top-0 hidden md:flex flex-col py-base gap-2 z-50">
+    <!-- Brand Area -->
+    <div class="px-6 h-16 flex items-center shrink-0 mb-4">
+      <span class="font-headline-lg text-headline-lg font-bold text-primary">Vokasi Pintar</span>
+    </div>
+    
+    <!-- User Profile Stub -->
+    <div class="px-6 mb-6 flex items-center gap-3">
+      <img alt="Budi Prasetyo Profile" class="w-10 h-10 rounded-full object-cover border-2 border-surface" data-alt="A professional, well-lit portrait photograph of an Indonesian male vocational student. High clarity, bright light-mode aesthetic, corporate modernism style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPYghYQXxo-RNibBZ4G1-Q9fqkatRmE0JG8pXQRB4pVzN10cf3ae28n34xmKo9OxLbupjCmsYBsgSELAcFCDObyjhE10uaqNEeBts-a-Kwm95QZ31EGqCon5jVQUE-4vKDLljgttnzIeHdsArvLBoepqPVK21TgGNm2m-Tes_OUcNjtOD5YJqFm8nocEgiHS9u0zCZkpD7OXBQuUf4zBNh2RDr3Kw4Khz89cBOLiT2YYaiBVBq_OXB2g">
+      <div class="flex flex-col">
+        <span class="font-label-md text-label-md text-on-surface truncate">Budi Prasetyo</span>
+        <span class="font-label-sm text-label-sm text-on-surface-variant truncate">Vocational Student</span>
+      </div>
+    </div>
+    
+    <!-- Main Navigation -->
+    <nav class="flex-1 flex flex-col gap-1 px-3 overflow-y-auto">
+      <!-- Dashboard (Inactive) -->
+      <a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant transition-colors group" href="Dashboard_Siswa.html">
+        <span class="material-symbols-outlined group-hover:text-primary transition-colors" data-icon="dashboard">dashboard</span>
+        <span class="font-label-md text-label-md">Dashboard</span>
+      </a>
+      
+      <!-- Learning Center (Inactive) -->
+      <a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant transition-colors group" href="Learning_Center.html">
+        <span class="material-symbols-outlined group-hover:text-primary transition-colors" data-icon="school">school</span>
+        <span class="font-label-md text-label-md">Learning Center</span>
+      </a>
+      
+      <!-- Instructor Panel (Active) -->
+      <a class="flex items-center gap-3 px-3 py-3 bg-surface-variant rounded-lg text-primary font-bold border-r-4 border-primary scale-95 transition-transform duration-150 relative" href="Dashboard_Instruktur.html">
+        <span class="material-symbols-outlined fill text-primary" data-icon="engineering" data-weight="fill">engineering</span>
+        <span class="font-label-md text-label-md text-primary">Instructor Panel</span>
+      </a>
+      
+      <!-- Industry Portal (Inactive) -->
+      <a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant transition-colors group" href="Portal_Industri.html">
+        <span class="material-symbols-outlined group-hover:text-primary transition-colors" data-icon="handshake">handshake</span>
+        <span class="font-label-md text-label-md">Industry Portal</span>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- Main Content Canvas -->
+  <main class="pt-24 pb-12 px-margin-mobile md:px-gutter md:ml-64 min-h-screen flex flex-col gap-8">
+    <!-- Page Header -->
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div>
+        <h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background">Dashboard Instruktur</h1>
+        <p class="font-body-md text-body-md text-on-surface-variant mt-1">Overview of class performance and pending tasks.</p>
+      </div>
+      <div class="flex gap-3">
+        <button class="bg-surface text-primary border border-outline-variant/50 font-label-md text-label-md h-11 px-6 rounded-lg flex items-center gap-2 hover:bg-surface-variant transition-colors ambient-shadow">
+          <span class="material-symbols-outlined text-[20px]">download</span>
+          Export Report
+        </button>
+      </div>
+    </div>
+
+    <!-- Bento Grid Layout -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+      <!-- Class Analytics (Area Chart) - Span 8 -->
+      <section class="md:col-span-8 bg-surface rounded-2xl ambient-shadow p-6 flex flex-col border border-outline-variant/20">
+        <div class="flex justify-between items-start mb-6">
+          <div>
+            <h2 class="font-headline-md text-headline-md text-on-surface">Class Analytics</h2>
+            <p class="font-body-sm text-on-surface-variant">Student grade trends across all active modules.</p>
+          </div>
+          <select class="bg-surface-container-low border-none text-on-surface font-label-sm text-label-sm rounded-lg py-2 pl-3 pr-8 focus:ring-2 focus:ring-primary">
+            <option>Last 30 Days</option>
+            <option>This Semester</option>
+          </select>
+        </div>
+        
+        <!-- Chart Visualization Placeholder -->
+        <div class="flex-1 min-h-[280px] relative w-full mt-4 bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/10">
+          <!-- Faux Grid Lines -->
+          <div class="absolute inset-0 flex flex-col justify-between py-4 px-0 opacity-20 pointer-events-none">
+            <div class="border-b border-outline-variant w-full"></div>
+            <div class="border-b border-outline-variant w-full"></div>
+            <div class="border-b border-outline-variant w-full"></div>
+            <div class="border-b border-outline-variant w-full"></div>
+            <div class="border-b border-outline-variant w-full"></div>
+          </div>
+          <!-- Faux Area Chart SVG -->
+          <svg class="absolute bottom-0 w-full h-[80%] text-primary/10 fill-current" preserveAspectRatio="none" viewBox="0 0 100 40">
+            <path d="M0,40 L0,25 Q10,15 20,20 T40,10 T60,18 T80,5 T100,15 L100,40 Z"></path>
+          </svg>
+          <svg class="absolute bottom-0 w-full h-[80%] pointer-events-none" preserveAspectRatio="none" viewBox="0 0 100 40">
+            <path class="text-primary" d="M0,25 Q10,15 20,20 T40,10 T60,18 T80,5 T100,15" fill="none" stroke="currentColor" stroke-width="0.5"></path>
+          </svg>
+          <!-- Data Points -->
+          <div class="absolute bottom-[40%] left-[20%] w-2 h-2 bg-primary rounded-full border-2 border-surface shadow-sm cursor-pointer hover:scale-150 transition-transform"></div>
+          <div class="absolute bottom-[65%] left-[40%] w-2 h-2 bg-primary rounded-full border-2 border-surface shadow-sm cursor-pointer hover:scale-150 transition-transform"></div>
+          <div class="absolute bottom-[45%] left-[60%] w-2 h-2 bg-primary rounded-full border-2 border-surface shadow-sm cursor-pointer hover:scale-150 transition-transform"></div>
+          <div class="absolute bottom-[75%] left-[80%] w-2 h-2 bg-primary rounded-full border-2 border-surface shadow-sm cursor-pointer hover:scale-150 transition-transform"></div>
+        </div>
+      </section>
+
+      <!-- Statistics (Completion Rates) - Span 4 -->
+      <section class="md:col-span-4 bg-surface rounded-2xl ambient-shadow p-6 flex flex-col border border-outline-variant/20">
+        <h2 class="font-headline-md text-headline-md text-on-surface mb-1">Completion Rates</h2>
+        <p class="font-body-sm text-on-surface-variant mb-8">Overall student progress by course.</p>
+        
+        <div class="flex flex-col gap-6">
+          <!-- Progress Item 1 -->
+          <div>
+            <div class="flex justify-between items-end mb-2">
+              <span class="font-label-md text-label-md text-on-surface">Teknik Otomotif</span>
+              <span class="font-label-sm text-label-sm text-secondary font-bold">82%</span>
+            </div>
+            <div class="w-full h-2 bg-surface-container-high rounded-full overflow-hidden">
+              <div class="h-full bg-secondary rounded-full w-[82%]"></div>
+            </div>
+          </div>
+          <!-- Progress Item 2 -->
+          <div>
+            <div class="flex justify-between items-end mb-2">
+              <span class="font-label-md text-label-md text-on-surface">Kewirausahaan</span>
+              <span class="font-label-sm text-label-sm text-secondary font-bold">64%</span>
+            </div>
+            <div class="w-full h-2 bg-surface-container-high rounded-full overflow-hidden">
+              <div class="h-full bg-secondary rounded-full w-[64%]"></div>
+            </div>
+          </div>
+          <!-- Progress Item 3 -->
+          <div>
+            <div class="flex justify-between items-end mb-2">
+              <span class="font-label-md text-label-md text-on-surface">Dasar Pemrograman</span>
+              <span class="font-label-sm text-label-sm text-secondary font-bold">45%</span>
+            </div>
+            <div class="w-full h-2 bg-surface-container-high rounded-full overflow-hidden">
+              <div class="h-full bg-secondary rounded-full w-[45%]"></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mt-auto pt-6">
+          <button class="w-full bg-surface-container-low text-primary font-label-md text-label-md h-11 rounded-lg hover:bg-surface-variant transition-colors flex items-center justify-center gap-2">
+            View Detailed Stats
+            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Course Management Grid - Span 12 -->
+      <section class="md:col-span-12">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="font-headline-md text-headline-md text-on-surface">Active Courses</h2>
+          <button class="text-primary font-label-md text-label-md hover:underline">View All</button>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Course Card 1 -->
+          <article class="bg-surface rounded-2xl ambient-shadow overflow-hidden border border-outline-variant/20 flex flex-col group cursor-pointer">
+            <div class="h-40 w-full relative overflow-hidden bg-surface-container-low">
+              <div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="A detailed, high-resolution photograph of a modern automotive workshop interior with clean tools and a car engine block. Corporate modernism style, bright and professional lighting, deep blues and crisp whites." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD6rgkkNLrO2Syav1yZvpC6a5gc7U9fqf8wLw6W-NIvU5mp_crIXJTH1-jxZXNm81aXqwVgsPrqr-Cum1k8NkMkZHIWquiClgRmGIL5gnz3UM4oKqw1aQczqL7k0-HUmMr5ZCmVPX367ATXRa4h2sx9aVmPEfccUl9WT0LOmxV4fX-m7gvMPP0spMrojo9v5EjgnQDByJu2tiA0rfyCRaGgbQWUXxCxQalUg_RiEauUa3V6YI8WoleKwA')"></div>
+              <div class="absolute top-3 left-3 bg-surface/90 backdrop-blur-sm px-3 py-1 rounded-full border border-outline-variant/30">
+                <span class="font-label-sm text-label-sm text-secondary font-bold">Automotive</span>
+              </div>
+            </div>
+            <div class="p-5 flex flex-col flex-1">
+              <h3 class="font-headline-md text-[20px] leading-tight text-on-surface mb-2">Teknik Otomotif Lanjutan</h3>
+              <p class="font-body-sm text-on-surface-variant mb-6 line-clamp-2">Advanced diagnostics and engine repair methodologies for modern hybrid vehicles.</p>
+              <div class="mt-auto flex items-center justify-between">
+                <div class="flex items-center gap-2 text-on-surface-variant">
+                  <span class="material-symbols-outlined text-[18px]">group</span>
+                  <span class="font-label-sm text-label-sm">124 Students</span>
+                </div>
+                <button class="bg-primary text-on-primary font-label-md text-label-md h-9 px-4 rounded-lg hover:bg-primary-container hover:text-on-primary-container transition-colors shadow-sm">
+                  Manage
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Course Card 2 -->
+          <article class="bg-surface rounded-2xl ambient-shadow overflow-hidden border border-outline-variant/20 flex flex-col group cursor-pointer">
+            <div class="h-40 w-full relative overflow-hidden bg-surface-container-low">
+              <div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="A modern, clean flatlay photograph of a business plan document, a sleek digital tablet displaying charts, and a cup of coffee on a light gray desk. Bright, corporate modernism aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCT90-qVPLBmmC1GM8V1MYl-JnB4gvtC-Muibn5ZEz3WxbgfFur_R6YVW7frdmeHrRa0bEVP0Pzm4w880B_0oXpxmVmb8iNHUIDOdvkc4IdRwBb4T8f_5dEIfktNW0lW98e8AFZJUFpCTmPBcOVjNVp7PwJbMlZXvGjOa0C-4lfbaVABlDvEaqM6BErIH9QGEYLND-BbMxJb8k5DTzAb_CjKdG2KAGnv23u3H537-A4wCawU3JvxSgpQA')"></div>
+              <div class="absolute top-3 left-3 bg-surface/90 backdrop-blur-sm px-3 py-1 rounded-full border border-outline-variant/30">
+                <span class="font-label-sm text-label-sm text-tertiary font-bold">Business</span>
+              </div>
+            </div>
+            <div class="p-5 flex flex-col flex-1">
+              <h3 class="font-headline-md text-[20px] leading-tight text-on-surface mb-2">Kewirausahaan Bisnis</h3>
+              <p class="font-body-sm text-on-surface-variant mb-6 line-clamp-2">Practical steps to developing a viable business model and securing initial funding.</p>
+              <div class="mt-auto flex items-center justify-between">
+                <div class="flex items-center gap-2 text-on-surface-variant">
+                  <span class="material-symbols-outlined text-[18px]">group</span>
+                  <span class="font-label-sm text-label-sm">89 Students</span>
+                </div>
+                <button class="bg-primary text-on-primary font-label-md text-label-md h-9 px-4 rounded-lg hover:bg-primary-container hover:text-on-primary-container transition-colors shadow-sm">
+                  Manage
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Add New Course Action Card -->
+          <article class="bg-surface-container-low rounded-2xl border-2 border-dashed border-outline-variant/50 flex flex-col items-center justify-center p-6 text-center hover:bg-surface-variant/50 transition-colors cursor-pointer min-h-[300px]">
+            <div class="w-16 h-16 rounded-full bg-surface-variant flex items-center justify-center mb-4 text-primary">
+              <span class="material-symbols-outlined text-[32px]">add</span>
+            </div>
+            <h3 class="font-headline-md text-[20px] text-on-surface mb-1">Create New Module</h3>
+            <p class="font-body-sm text-on-surface-variant">Draft a new curriculum for your students.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Assessment Center - Span 12 -->
+      <section class="md:col-span-12 bg-surface rounded-2xl ambient-shadow overflow-hidden border border-outline-variant/20 mt-2">
+        <div class="p-6 border-b border-outline-variant/30 flex items-center justify-between bg-surface-container-lowest">
+          <div>
+            <h2 class="font-headline-md text-headline-md text-on-surface">Assessment Center</h2>
+            <p class="font-body-sm text-on-surface-variant">Pending assignments waiting for your review.</p>
+          </div>
+          <span class="bg-error-container text-on-error-container font-label-sm px-3 py-1 rounded-full">5 Pending</span>
+        </div>
+        
+        <div class="w-full overflow-x-auto">
+          <table class="w-full text-left border-collapse min-w-[600px]">
+            <thead>
+              <tr class="bg-surface-container-lowest border-b border-outline-variant/30">
+                <th class="py-4 px-6 font-label-md text-label-md text-on-surface-variant font-medium">Student Name</th>
+                <th class="py-4 px-6 font-label-md text-label-md text-on-surface-variant font-medium">Course / Assignment</th>
+                <th class="py-4 px-6 font-label-md text-label-md text-on-surface-variant font-medium">Date Submitted</th>
+                <th class="py-4 px-6 font-label-md text-label-md text-on-surface-variant font-medium text-right">Action</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-outline-variant/20">
+              <!-- Row 1 -->
+              <tr class="hover:bg-surface-container-lowest transition-colors group">
+                <td class="py-4 px-6">
+                  <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-label-sm font-bold">AS</div>
+                    <span class="font-body-md text-on-surface font-medium">Ahmad Santoso</span>
+                  </div>
+                </td>
+                <td class="py-4 px-6">
+                  <div class="flex flex-col">
+                    <span class="font-body-md text-on-surface">Teknik Otomotif</span>
+                    <span class="font-label-sm text-on-surface-variant">Engine Diagnostic Report</span>
+                  </div>
+                </td>
+                <td class="py-4 px-6 font-body-sm text-on-surface-variant">Oct 24, 2023</td>
+                <td class="py-4 px-6 text-right">
+                  <button class="bg-secondary text-on-secondary font-label-sm text-label-sm h-8 px-4 rounded-md hover:bg-secondary/90 transition-colors shadow-sm">
+                    Evaluate
+                  </button>
+                </td>
+              </tr>
+              <!-- Row 2 -->
+              <tr class="hover:bg-surface-container-lowest transition-colors group">
+                <td class="py-4 px-6">
+                  <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center font-label-sm font-bold">SW</div>
+                    <span class="font-body-md text-on-surface font-medium">Siti Wahyuni</span>
+                  </div>
+                </td>
+                <td class="py-4 px-6">
+                  <div class="flex flex-col">
+                    <span class="font-body-md text-on-surface">Kewirausahaan</span>
+                    <span class="font-label-sm text-on-surface-variant">Business Pitch Deck</span>
+                  </div>
+                </td>
+                <td class="py-4 px-6 font-body-sm text-on-surface-variant">Oct 23, 2023</td>
+                <td class="py-4 px-6 text-right">
+                  <button class="bg-secondary text-on-secondary font-label-sm text-label-sm h-8 px-4 rounded-md hover:bg-secondary/90 transition-colors shadow-sm">
+                    Evaluate
+                  </button>
+                </td>
+              </tr>
+              <!-- Row 3 -->
+              <tr class="hover:bg-surface-container-lowest transition-colors group">
+                <td class="py-4 px-6">
+                  <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-surface-dim text-on-surface flex items-center justify-center font-label-sm font-bold">RN</div>
+                    <span class="font-body-md text-on-surface font-medium">Rizky Nugroho</span>
+                  </div>
+                </td>
+                <td class="py-4 px-6">
+                  <div class="flex flex-col">
+                    <span class="font-body-md text-on-surface">Teknik Otomotif</span>
+                    <span class="font-label-sm text-on-surface-variant">Hybrid System Quiz</span>
+                  </div>
+                </td>
+                <td class="py-4 px-6 font-body-sm text-on-surface-variant">Oct 22, 2023</td>
+                <td class="py-4 px-6 text-right">
+                  <button class="bg-secondary text-on-secondary font-label-sm text-label-sm h-8 px-4 rounded-md hover:bg-secondary/90 transition-colors shadow-sm">
+                    Evaluate
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="p-4 bg-surface-container-lowest border-t border-outline-variant/20 text-center">
+          <button class="text-primary font-label-sm text-label-sm hover:underline">View All Assessments</button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-surface-container-lowest border-t border-outline-variant w-full py-8 md:pl-72 flex flex-col md:flex-row justify-between items-center px-gutter gap-4 mt-auto z-10 relative">
+    <div class="flex flex-col items-center md:items-start gap-1">
+      <span class="font-label-md text-label-md font-bold text-on-surface">Vokasi Pintar</span>
+      <span class="font-body-md text-body-md text-secondary">© 2024 Vokasi Pintar LMS. All rights reserved.</span>
+    </div>
+    <nav class="flex flex-wrap justify-center gap-6">
+      <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Privacy Policy</a>
+      <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Terms of Service</a>
+      <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Vocational Standards</a>
+      <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Certification Seals</a>
+    </nav>
+  </footer>
+
+</body>
+</html>

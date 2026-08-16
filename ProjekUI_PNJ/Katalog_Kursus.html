@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html class="light" lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Katalog Kursus - Vokasi Pintar</title>
+  
+  <!-- Google Fonts & Material Symbols -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-tertiary-container": "#ffa929",
+            "on-error-container": "#93000a",
+            "on-primary": "#ffffff",
+            "tertiary-fixed": "#ffddb8",
+            "primary-fixed-dim": "#b8c4ff",
+            "on-primary-fixed": "#001453",
+            "on-background": "#121c2a",
+            "primary-fixed": "#dde1ff",
+            "secondary-fixed": "#6ffbbe",
+            "on-secondary-container": "#00714d",
+            "on-tertiary-fixed-variant": "#653e00",
+            "surface-variant": "#d9e3f6",
+            "primary-container": "#1e40af",
+            "outline-variant": "#c4c5d5",
+            "on-surface": "#121c2a",
+            "on-primary-fixed-variant": "#173bab",
+            "secondary-container": "#6cf8bb",
+            "on-primary-container": "#a8b8ff",
+            "surface-container-high": "#dee9fc",
+            "on-tertiary-fixed": "#2a1700",
+            "error-container": "#ffdad6",
+            "outline": "#757684",
+            "secondary": "#006c49",
+            "primary": "#00288e",
+            "on-tertiary": "#ffffff",
+            "error": "#ba1a1a",
+            "background": "#f8f9ff",
+            "surface-container-lowest": "#ffffff",
+            "on-secondary-fixed": "#002113",
+            "on-secondary": "#ffffff",
+            "surface-tint": "#3755c3",
+            "secondary-fixed-dim": "#4edea3",
+            "surface-container-highest": "#d9e3f6",
+            "surface-container-low": "#eff4ff",
+            "inverse-primary": "#b8c4ff",
+            "surface-bright": "#f8f9ff",
+            "tertiary-container": "#6b4200",
+            "surface-container": "#e6eeff",
+            "on-error": "#ffffff",
+            "on-secondary-fixed-variant": "#005236",
+            "tertiary": "#4c2e00",
+            "on-surface-variant": "#444653",
+            "surface": "#f8f9ff",
+            "surface-dim": "#d0dbed",
+            "inverse-surface": "#27313f",
+            "tertiary-fixed-dim": "#ffb95f",
+            "inverse-on-surface": "#eaf1ff"
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "base": "8px",
+            "margin-mobile": "16px",
+            "gutter": "24px",
+            "container-max": "1280px",
+            "margin-desktop": "32px"
+          },
+          fontFamily: {
+            "display-lg": ["Inter", "sans-serif"],
+            "body-md": ["Inter", "sans-serif"],
+            "body-lg": ["Inter", "sans-serif"],
+            "headline-lg": ["Inter", "sans-serif"],
+            "label-md": ["Inter", "sans-serif"],
+            "label-sm": ["Inter", "sans-serif"],
+            "headline-lg-mobile": ["Inter", "sans-serif"],
+            "headline-md": ["Inter", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-surface text-on-surface font-body-md min-h-screen flex flex-col">
+
+  <!-- Top Navigation Bar (Desktop) -->
+  <nav class="hidden md:flex justify-between items-center w-full px-margin-desktop py-4 sticky top-0 z-50 bg-white shadow-sm font-body-md text-body-md">
+    <div class="flex items-center gap-8">
+      <a href="Dashboard_Siswa.html" class="font-headline-md text-headline-md font-bold text-primary">Vokasi Pintar</a>
+      <ul class="flex space-x-6">
+        <li>
+          <a class="text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-all px-3 py-2 rounded-lg" href="Dashboard_Siswa.html">Dashboard</a>
+        </li>
+        <li>
+          <a class="text-primary font-bold border-b-2 border-primary pb-1 px-3 py-2" href="/courses">Courses</a>
+        </li>
+        <li>
+          <a class="text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-all px-3 py-2 rounded-lg" href="Portal_Industri.html">Industry</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <div class="relative">
+        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+        <input class="pl-10 pr-4 py-2 rounded-lg border border-outline-variant bg-surface-container-lowest focus:border-primary focus:ring-1 focus:ring-primary text-body-md w-64" placeholder="Search..." type="text" />
+      </div>
+      <button aria-label="Notifikasi" class="text-on-surface-variant hover:text-primary hover:bg-surface-container-low p-2 rounded-full transition-all">
+        <span class="material-symbols-outlined">notifications</span>
+      </button>
+      <button aria-label="Pengaturan" class="text-on-surface-variant hover:text-primary hover:bg-surface-container-low p-2 rounded-full transition-all">
+        <span class="material-symbols-outlined">settings</span>
+      </button>
+      <a href="/profile" class="w-10 h-10 rounded-full bg-primary-container overflow-hidden border-2 border-surface-variant block">
+        <img alt="User Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZ9dK8QjZe2Sci-etxdHx_O8qDO8FHySNdQvhKHGgg7ijiq3JINcjI3WUYkvgcmHSR1GsdYqx_zNgTOpGjAHsO-a_8Gvk3RXrOaNTTaxFvBtOxIkJz2VQhf_SyuCWYZChddXPi7U_XQnbkHiFwEMffffReCDgvtwGDcQvTxGv8PCE5o6MePRuqoask-GpFs7mokksNmRss1qOoHqAj-iFJ7v-AMYg9cwOBXQ-9CXqvHmCqu-XsplK_qw" />
+      </a>
+    </div>
+  </nav>
+
+  <!-- Main Content Area -->
+  <main class="flex-1 w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-8 md:py-12 mb-20 md:mb-0">
+    
+    <!-- Header & Filter Section -->
+    <div class="mb-10">
+      <h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-6">Jelajahi Katalog Kursus</h1>
+      
+      <div class="bg-surface-container-lowest p-6 rounded-2xl shadow-[0_1px_3px_rgba(0,0,0,0.1)] flex flex-col md:flex-row gap-4 items-center justify-between">
+        <div class="w-full md:w-1/3 relative">
+          <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+          <input class="w-full pl-10 pr-4 py-3 rounded-lg border border-outline-variant bg-surface focus:border-primary focus:ring-1 focus:ring-primary font-body-md text-body-md transition-all" placeholder="Cari kursus, keahlian, atau instruktur..." type="text" />
+        </div>
+        
+        <div class="flex flex-wrap gap-3 w-full md:w-auto">
+          <select class="px-4 py-3 rounded-lg border border-outline-variant bg-surface font-label-md text-label-md text-on-surface-variant focus:border-primary focus:ring-1 focus:ring-primary cursor-pointer appearance-none">
+            <option>Semua Kategori</option>
+            <option>Otomotif</option>
+            <option>Teknologi Informasi</option>
+            <option>Manajemen Bisnis</option>
+            <option>Manufaktur</option>
+          </select>
+
+          <select class="px-4 py-3 rounded-lg border border-outline-variant bg-surface font-label-md text-label-md text-on-surface-variant focus:border-primary focus:ring-1 focus:ring-primary cursor-pointer appearance-none">
+            <option>Semua Durasi</option>
+            <option>0-2 Jam</option>
+            <option>2-5 Jam</option>
+            <option>5+ Jam</option>
+          </select>
+
+          <select class="px-4 py-3 rounded-lg border border-outline-variant bg-surface font-label-md text-label-md text-on-surface-variant focus:border-primary focus:ring-1 focus:ring-primary cursor-pointer appearance-none">
+            <option>Semua Tingkatan</option>
+            <option>Pemula</option>
+            <option>Menengah</option>
+            <option>Lanjutan</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Course Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-gutter">
+      
+      <!-- Card 1 -->
+      <article class="bg-surface-container-lowest rounded-2xl shadow-[0_1px_3px_rgba(0,0,0,0.1)] hover:shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1)] transition-shadow duration-300 overflow-hidden flex flex-col group cursor-pointer border border-outline-variant/30">
+        <div class="relative h-48 w-full overflow-hidden">
+          <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Sistem Mesin Otomotif" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbXNJvQAXVU83k9NgpAUEhjL1ZeSPChgBSl4rWLmNjBUK4cKGqoaTdQs9wLUh6unWWEVb1szOU617WeSxPfCd4vlsQVoBgQNGjxz6CzO4Gy_grIxOGSNsl0oyTsoF5WaWbgSWZ5JVck7wAyPShNOP2zMmJ6oKHrTX0WcTNPqbcigsHS9okpKDleB2lCuyMjN_6MXkYKO-VKxKDyXNR-dSWiGh06PB2FG963oMDjokuQVpkjkvY8KgRPQ" />
+          <div class="absolute top-3 left-3 bg-secondary text-on-secondary font-label-sm text-label-sm px-2 py-1 rounded-md">Otomotif</div>
+        </div>
+        <div class="p-5 flex-1 flex flex-col">
+          <h3 class="font-headline-md text-[20px] leading-[28px] font-semibold text-on-surface mb-2 group-hover:text-primary transition-colors line-clamp-2">Diagnosa & Perbaikan Mesin Lanjutan</h3>
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-6 h-6 rounded-full bg-primary-container flex items-center justify-center text-primary text-[10px] font-bold">JD</div>
+            <span class="font-label-sm text-label-sm text-on-surface-variant">John Doe, Master Mechanic</span>
+          </div>
+          <div class="mt-auto flex items-center justify-between pt-4 border-t border-surface-variant">
+            <div class="flex items-center gap-1 text-on-tertiary-container">
+              <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="font-label-md text-label-md text-on-surface">4.8</span>
+              <span class="font-label-sm text-label-sm text-outline">(124)</span>
+            </div>
+            <div class="font-label-md text-label-md text-primary font-bold bg-primary-container/20 px-3 py-1 rounded-full">Rp 450.000</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="bg-surface-container-lowest rounded-2xl shadow-[0_1px_3px_rgba(0,0,0,0.1)] hover:shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1)] transition-shadow duration-300 overflow-hidden flex flex-col group cursor-pointer border border-outline-variant/30">
+        <div class="relative h-48 w-full overflow-hidden">
+          <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Ruang Kerja Pemrograman Web" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6a7NAL-5Ae7ej0pLAY1CxYsH3GbC4oTDNrCWvGypdvRLFiwR93eOXeJWl6CsuNi8Sxh41bFTwtgkCWiMnSqpwKmfRrIJyYPpSKhpovQy4y0fyYs6oMVgX_tQbioDk0l7IaJcARGkqCOnyphei-c3xrIvhmz2sxSPPWJuThZ4FVE8ooxESv59O9IgMHOa9Pa6dnnXoMe1eGyCNSIzmg0hfxX8B4shkcEzlNZjeJtTaoaGYTyTkJRiCdA" />
+          <div class="absolute top-3 left-3 bg-primary text-on-primary font-label-sm text-label-sm px-2 py-1 rounded-md">IT & Software</div>
+        </div>
+        <div class="p-5 flex-1 flex flex-col">
+          <h3 class="font-headline-md text-[20px] leading-[28px] font-semibold text-on-surface mb-2 group-hover:text-primary transition-colors line-clamp-2">Full-Stack Web Development Bootcamp</h3>
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-6 h-6 rounded-full bg-secondary-container flex items-center justify-center text-secondary text-[10px] font-bold">AS</div>
+            <span class="font-label-sm text-label-sm text-on-surface-variant">Anita Smith, Sr. Engineer</span>
+          </div>
+          <div class="mt-auto flex items-center justify-between pt-4 border-t border-surface-variant">
+            <div class="flex items-center gap-1 text-on-tertiary-container">
+              <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="font-label-md text-label-md text-on-surface">4.9</span>
+              <span class="font-label-sm text-label-sm text-outline">(890)</span>
+            </div>
+            <div class="font-label-md text-label-md text-secondary font-bold bg-secondary-container/30 px-3 py-1 rounded-full">Gratis</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="bg-surface-container-lowest rounded-2xl shadow-[0_1px_3px_rgba(0,0,0,0.1)] hover:shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1)] transition-shadow duration-300 overflow-hidden flex flex-col group cursor-pointer border border-outline-variant/30">
+        <div class="relative h-48 w-full overflow-hidden">
+          <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Pelatihan Manajemen Proyek" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_-fQ6M7bz1SL4ObCPBkiC4Dx7o0f3PBiNDLDvD1RqNcrSCYzWHJ_OBJ4CxXHx0UAY72AD3iJ5aHgMw2L2rl2Ht0bnfmNcbf4Vo9v4frjAKDaGuVg0lfy6OcpPfdsZuL4Vw4rAtnLJ2WqLoDfgMFDRJHt8qZ8cYdej55EnmGL76aYWT_7tuioaJ8lIaVORfsOAcDy7FAVFUzOsBHPwBof13kw7xUXB5hYuW6kUUOhjSXq4bA6DEMMHaw" />
+          <div class="absolute top-3 left-3 bg-tertiary text-on-tertiary font-label-sm text-label-sm px-2 py-1 rounded-md">Bisnis</div>
+        </div>
+        <div class="p-5 flex-1 flex flex-col">
+          <h3 class="font-headline-md text-[20px] leading-[28px] font-semibold text-on-surface mb-2 group-hover:text-primary transition-colors line-clamp-2">Persiapan Sertifikasi Project Management Professional</h3>
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-6 h-6 rounded-full bg-tertiary-container flex items-center justify-center text-on-tertiary-container text-[10px] font-bold">RJ</div>
+            <span class="font-label-sm text-label-sm text-on-surface-variant">Robert Johnson, PMP</span>
+          </div>
+          <div class="mt-auto flex items-center justify-between pt-4 border-t border-surface-variant">
+            <div class="flex items-center gap-1 text-on-tertiary-container">
+              <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="font-label-md text-label-md text-on-surface">4.7</span>
+              <span class="font-label-sm text-label-sm text-outline">(56)</span>
+            </div>
+            <div class="font-label-md text-label-md text-primary font-bold bg-primary-container/20 px-3 py-1 rounded-full">Rp 750.000</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="bg-surface-container-lowest rounded-2xl shadow-[0_1px_3px_rgba(0,0,0,0.1)] hover:shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1)] transition-shadow duration-300 overflow-hidden flex flex-col group cursor-pointer border border-outline-variant/30">
+        <div class="relative h-48 w-full overflow-hidden">
+          <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Mesin Pemotong CNC" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGZ1VrckawR-UMFED7tnUG_XPoddkAtytEMnWod_j28B_6D5hgIqfbacLT-qC4MmFhYVWyWghs_MfIzl5zSGcvrgEIR7nJFaG8-0gRqYN_82KHDGqdPhtgMXnuvmQr8N-kSnZnF7fMiyD6eFeEQ5mYSnYT01VH8djiJCoNLPJlTEf_QHRiKf8pDHU8ezRfxsOkV6GcqPYYWvd2PFePFY1VjykIrvozAwfpYgSnQrDkJZZ_kAc-rb0QHQ" />
+          <div class="absolute top-3 left-3 bg-secondary text-on-secondary font-label-sm text-label-sm px-2 py-1 rounded-md">Manufaktur</div>
+        </div>
+        <div class="p-5 flex-1 flex flex-col">
+          <h3 class="font-headline-md text-[20px] leading-[28px] font-semibold text-on-surface mb-2 group-hover:text-primary transition-colors line-clamp-2">Dasar-Dasar Pemesinan CNC</h3>
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-6 h-6 rounded-full bg-primary-container flex items-center justify-center text-primary text-[10px] font-bold">KL</div>
+            <span class="font-label-sm text-label-sm text-on-surface-variant">Ken Lee, Teknisi Industri</span>
+          </div>
+          <div class="mt-auto flex items-center justify-between pt-4 border-t border-surface-variant">
+            <div class="flex items-center gap-1 text-on-tertiary-container">
+              <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="font-label-md text-label-md text-on-surface">4.6</span>
+              <span class="font-label-sm text-label-sm text-outline">(34)</span>
+            </div>
+            <div class="font-label-md text-label-md text-primary font-bold bg-primary-container/20 px-3 py-1 rounded-full">Rp 300.000</div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- Bottom Navigation Bar (Mobile) -->
+  <nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface shadow-[0_-1px_3px_rgba(0,0,0,0.1)] rounded-t-2xl font-label-sm text-label-sm">
+    <a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors py-1 px-4 rounded-full" href="Dashboard_Siswa.html">
+      <span class="material-symbols-outlined mb-1 text-xl">home</span>
+      Dashboard
+    </a>
+    <a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1" href="">
+      <span class="material-symbols-outlined mb-1 text-xl" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+      Courses
+    </a>
+    <a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors py-1 px-4 rounded-full" href="Portal_Industri.html">
+      <span class="material-symbols-outlined mb-1 text-xl">domain</span>
+      Industry
+    </a>
+    <a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors py-1 px-4 rounded-full" href="/profile">
+      <span class="material-symbols-outlined mb-1 text-xl">person</span>
+      Profile
+    </a>
+  </nav>
+
+</body>
+</html>

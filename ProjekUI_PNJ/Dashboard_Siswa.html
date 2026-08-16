@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Dashboard Siswa Vokasi Pintar</title>
+  
+  <!-- Google Fonts: Inter -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  
+  <!-- Material Symbols -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+  
+  <style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 24px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-smoothing: antialiased;
+    }
+  </style>
+  
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-surface": "#27313f",
+            "outline": "#757684",
+            "on-tertiary-fixed": "#2a1700",
+            "on-tertiary": "#ffffff",
+            "on-tertiary-fixed-variant": "#653e00",
+            "tertiary-fixed": "#ffddb8",
+            "on-background": "#121c2a",
+            "secondary": "#006c49",
+            "surface": "#f8f9ff",
+            "on-primary-container": "#a8b8ff",
+            "tertiary-fixed-dim": "#ffb95f",
+            "secondary-container": "#6cf8bb",
+            "on-primary-fixed": "#001453",
+            "surface-container-high": "#dee9fc",
+            "secondary-fixed": "#6ffbbe",
+            "primary": "#00288e",
+            "on-error-container": "#93000a",
+            "secondary-fixed-dim": "#4edea3",
+            "on-primary": "#ffffff",
+            "error-container": "#ffdad6",
+            "outline-variant": "#c4c5d5",
+            "on-secondary-container": "#00714d",
+            "surface-container-lowest": "#ffffff",
+            "surface-variant": "#d9e3f6",
+            "background": "#f8f9ff",
+            "on-secondary": "#ffffff",
+            "inverse-on-surface": "#eaf1ff",
+            "tertiary-container": "#6b4200",
+            "surface-container-low": "#eff4ff",
+            "primary-fixed": "#dde1ff",
+            "tertiary": "#4c2e00",
+            "on-primary-fixed-variant": "#173bab",
+            "surface-dim": "#d0dbed",
+            "on-surface": "#121c2a",
+            "on-secondary-fixed": "#002113",
+            "primary-fixed-dim": "#b8c4ff",
+            "on-surface-variant": "#444653",
+            "error": "#ba1a1a",
+            "primary-container": "#1e40af",
+            "inverse-primary": "#b8c4ff",
+            "surface-container": "#e6eeff",
+            "on-tertiary-container": "#ffa929",
+            "surface-tint": "#3755c3",
+            "on-secondary-fixed-variant": "#005236",
+            "surface-bright": "#f8f9ff",
+            "on-error": "#ffffff",
+            "surface-container-highest": "#d9e3f6"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "container-max": "1280px",
+            "gutter": "24px",
+            "margin-desktop": "32px",
+            "margin-mobile": "16px",
+            "base": "8px"
+          },
+          "fontFamily": {
+            "label-sm": ["Inter"],
+            "label-md": ["Inter"],
+            "display-lg": ["Inter"],
+            "body-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-lg-mobile": ["Inter"],
+            "headline-md": ["Inter"],
+            "headline-lg": ["Inter"]
+          },
+          "fontSize": {
+            "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+            "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+            "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md overflow-x-hidden antialiased">
+
+  <!-- TopAppBar -->
+  <header class="bg-surface shadow-sm docked full-width fixed top-0 z-40 flex justify-between items-center w-full px-gutter h-16 md:pl-72 transition-all duration-300">
+    <div class="flex items-center gap-4">
+      <!-- Mobile Menu Button -->
+      <button class="md:hidden text-primary p-2 rounded-full hover:bg-surface-variant transition-colors">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+      <div class="hidden lg:flex gap-6 ml-8">
+        <a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-md text-label-md hover:text-primary transition-colors flex items-center gap-1" href="Katalog_Kursus.html">
+          Modules
+        </a>
+        <a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors flex items-center gap-1" href="certificates.html">
+          Certificates
+        </a>
+        <a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors flex items-center gap-1" href="Karir.html">
+          Career
+        </a>
+      </div>
+    </div>
+    
+    <div class="flex items-center gap-4">
+      <button class="text-on-surface-variant hover:text-primary transition-colors p-2 rounded-full hover:bg-surface-variant">
+        <span class="material-symbols-outlined">search</span>
+      </button>
+      <div class="flex gap-2">
+        <button class="text-on-surface-variant hover:text-primary transition-colors p-2 rounded-full hover:bg-surface-variant relative">
+          <span class="material-symbols-outlined">notifications</span>
+          <span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+        </button>
+        <button class="text-on-surface-variant hover:text-primary transition-colors p-2 rounded-full hover:bg-surface-variant">
+          <span class="material-symbols-outlined">apps</span>
+        </button>
+      </div>
+      <div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden border border-outline-variant cursor-pointer ml-2">
+        <img alt="Budi Prasetyo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiSMWDe2KPC0V1NBtJ7FkvFVrt0l2Du-hBsX6bkheeWI7yipfnfiPOQzTcCZogW3RH3C-h7rATp6pm6VHBJmJ8kDjM26gbEU4erzbKlQGJCtTZMmLUJC3Kc6QLGwW88QRTwYDfigQiaQhQz4qnhQg6cEQShqVAcn8cpVgnsDF52MZTPJ1cwMjXCQiZ2T5FplezYQrg2q2dYo0_X1MbpxMrEh9LbI5eAMztqQCX6uAJ8KXNsmdAB9Y6rg">
+      </div>
+    </div>
+  </header>
+
+  <!-- SideNavBar -->
+  <nav class="bg-surface-container-low shadow-sm h-screen w-64 fixed left-0 top-0 hidden md:flex flex-col py-base gap-2 z-50">
+    <!-- Brand Header -->
+    <div class="px-6 py-4 flex items-center gap-3 mt-16">
+      <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold text-xl">
+        V
+      </div>
+      <div>
+        <h2 class="font-headline-md text-headline-md font-bold text-primary text-lg">Vokasi Pintar</h2>
+      </div>
+    </div>
+    
+    <div class="px-6 py-4 mb-4 border-b border-outline-variant/30 flex items-center gap-4">
+      <img alt="Budi Prasetyo Profile" class="w-12 h-12 rounded-full border-2 border-primary object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBRhy_wvsQSeoKUWgP3zcBCBxqOCxvb2oj6sAWPL2kQyIIaj2zvKYHmlGbst1WSBRzr_NdG9OL7cHs2Z3yZvUOWqmHf6EyoNlETCB_OnOGzz1I5ZetYG_5lR9Ih4kovCNj8rYF5h4vK1sGyyxO1kdRHK6GJ7FT3vIH1oj-izCyRypguL0NX8NkdG6v5yrC7ioTlYyWsWHOpgsmjk0mE_Rxs7ZMbjQ8-1_epqYEL6JShcbSD8UZgOHceg">
+      <div>
+        <p class="font-label-md text-label-md text-primary truncate max-w-[140px]">Budi Prasetyo</p>
+        <p class="font-label-sm text-label-sm text-on-surface-variant">Vocational Student</p>
+      </div>
+    </div>
+    
+    <!-- Main Navigation Tabs -->
+    <div class="flex-1 overflow-y-auto px-4 flex flex-col gap-1">
+      <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary font-bold border-r-4 border-primary bg-primary/5 hover:bg-surface-variant transition-colors scale-95 transition-transform duration-150" href="Dashboard_Siswa.html">
+        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+        <span class="font-label-md text-label-md">Dashboard</span>
+      </a>
+      <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant transition-colors group" href="Learning_Center.html">
+        <span class="material-symbols-outlined group-hover:text-primary transition-colors">school</span>
+        <span class="font-label-md text-label-md group-hover:text-primary transition-colors">Learning Center</span>
+      </a>
+      <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant transition-colors group" href="Dashboard_Instruktur.html">
+        <span class="material-symbols-outlined group-hover:text-primary transition-colors">engineering</span>
+        <span class="font-label-md text-label-md group-hover:text-primary transition-colors">Instructor Panel</span>
+      </a>
+      <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant transition-colors group" href="Portal_Industri.html">
+        <span class="material-symbols-outlined group-hover:text-primary transition-colors">handshake</span>
+        <span class="font-label-md text-label-md group-hover:text-primary transition-colors">Industry Portal</span>
+      </a>
+    </div>
+    
+    <!-- Footer Tabs -->
+    <div class="px-4 pb-6 flex flex-col gap-2 mt-auto">
+      <div class="border-t border-outline-variant/30 pt-4 mb-2"></div>
+      <a class="flex items-center gap-3 px-4 py-2 rounded-lg text-on-surface-variant hover:bg-surface-variant transition-colors group" href="#">
+        <span class="material-symbols-outlined text-[20px] group-hover:text-primary">settings</span>
+        <span class="font-label-sm text-label-sm group-hover:text-primary">Settings</span>
+      </a>
+      <a class="flex items-center gap-3 px-4 py-2 rounded-lg text-on-surface-variant hover:bg-surface-variant transition-colors group" href="#">
+        <span class="material-symbols-outlined text-[20px] group-hover:text-primary">help</span>
+        <span class="font-label-sm text-label-sm group-hover:text-primary">Support</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Main Content Area -->
+  <main class="md:ml-64 pt-20 pb-12 min-h-screen">
+    <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto space-y-gutter">
+      
+      <!-- Welcome Banner -->
+      <section class="bg-surface-container-lowest rounded-[24px] p-8 shadow-[0px_1px_3px_rgba(0,0,0,0.1)] relative overflow-hidden flex flex-col md:flex-row justify-between items-center border border-surface-variant">
+        <div class="absolute -right-20 -top-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+        <div class="absolute right-20 -bottom-20 w-48 h-48 bg-secondary/10 rounded-full blur-2xl"></div>
+        <div class="relative z-10 max-w-2xl">
+          <div class="inline-flex items-center gap-2 bg-secondary/10 text-secondary px-3 py-1 rounded-full mb-4">
+            <span class="material-symbols-outlined text-[16px]">stars</span>
+            <span class="font-label-sm text-label-sm uppercase tracking-wider">Level 3 Vocational Student</span>
+          </div>
+          <h2 class="font-display-lg text-headline-lg-mobile md:text-display-lg text-primary mb-2">Halo, Budi Prasetyo!</h2>
+          <p class="font-body-lg text-body-lg text-on-surface-variant flex items-center gap-2">
+            <span class="material-symbols-outlined text-secondary">public</span>
+            Fokus SDG 8: Keterampilan Siap Kerja.
+          </p>
+        </div>
+        <div class="relative z-10 mt-6 md:mt-0 flex gap-4">
+          <button class="bg-primary text-on-primary font-label-md text-label-md px-6 py-3 rounded-lg hover:bg-primary-container hover:text-on-primary-container transition-colors shadow-sm flex items-center gap-2 h-[44px]">
+            Lanjutkan Belajar
+            <span class="material-symbols-outlined">arrow_forward</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Bento Grid Layout -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+        
+        <!-- Left Column -->
+        <div class="lg:col-span-8 flex flex-col gap-gutter">
+          
+          <!-- Stats Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <!-- Stat Card 1 -->
+            <div class="bg-surface-container-lowest p-6 rounded-[16px] shadow-[0px_1px_3px_rgba(0,0,0,0.1)] border border-surface-variant flex flex-col justify-between group hover:shadow-[0px_10px_15px_-3px_rgba(0,40,142,0.1)] transition-shadow">
+              <div class="flex justify-between items-start mb-4">
+                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+                  <span class="material-symbols-outlined">monitoring</span>
+                </div>
+                <span class="text-secondary bg-secondary/10 px-2 py-0.5 rounded text-xs font-bold">+5%</span>
+              </div>
+              <div>
+                <p class="font-label-sm text-label-sm text-on-surface-variant mb-1 uppercase tracking-wider">Total Progres</p>
+                <h3 class="font-headline-lg text-headline-lg text-on-background">68%</h3>
+              </div>
+            </div>
+
+            <!-- Stat Card 2 -->
+            <div class="bg-surface-container-lowest p-6 rounded-[16px] shadow-[0px_1px_3px_rgba(0,0,0,0.1)] border border-surface-variant flex flex-col justify-between group hover:shadow-[0px_10px_15px_-3px_rgba(0,40,142,0.1)] transition-shadow">
+              <div class="flex justify-between items-start mb-4">
+                <div class="w-10 h-10 rounded-full bg-tertiary-container/10 flex items-center justify-center text-tertiary-container group-hover:scale-110 transition-transform">
+                  <span class="material-symbols-outlined">schedule</span>
+                </div>
+              </div>
+              <div>
+                <p class="font-label-sm text-label-sm text-on-surface-variant mb-1 uppercase tracking-wider">Jam Belajar</p>
+                <h3 class="font-headline-lg text-headline-lg text-on-background">230 <span class="text-lg text-on-surface-variant font-normal">Jam</span></h3>
+              </div>
+            </div>
+
+            <!-- Stat Card 3 -->
+            <div class="bg-surface-container-lowest p-6 rounded-[16px] shadow-[0px_1px_3px_rgba(0,0,0,0.1)] border border-surface-variant flex flex-col justify-between group hover:shadow-[0px_10px_15px_-3px_rgba(0,40,142,0.1)] transition-shadow">
+              <div class="flex justify-between items-start mb-4">
+                <div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center text-secondary group-hover:scale-110 transition-transform">
+                  <span class="material-symbols-outlined">quiz</span>
+                </div>
+                <span class="text-secondary bg-secondary/10 px-2 py-0.5 rounded text-xs font-bold">A Grade</span>
+              </div>
+              <div>
+                <p class="font-label-sm text-label-sm text-on-surface-variant mb-1 uppercase tracking-wider">Skor Kuis Rata-rata</p>
+                <h3 class="font-headline-lg text-headline-lg text-on-background">85<span class="text-lg text-on-surface-variant font-normal">/100</span></h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Active Courses Section -->
+          <div class="bg-surface-container-lowest rounded-[24px] p-6 md:p-8 shadow-[0px_1px_3px_rgba(0,0,0,0.1)] border border-surface-variant">
+            <div class="flex justify-between items-center mb-6">
+              <h3 class="font-headline-md text-headline-md text-primary">Active Courses</h3>
+              <button class="text-primary font-label-sm text-label-sm hover:underline flex items-center gap-1">
+                Lihat Semua <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+              </button>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <!-- Course 1 -->
+              <div class="group border border-outline-variant rounded-xl overflow-hidden hover:shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.1)] transition-all bg-surface">
+                <div class="h-32 w-full relative overflow-hidden bg-surface-variant">
+                  <img alt="Pemrograman Web" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCspR-V_SJ4vzpMZrl6BHIC9H_YpKDi0ldsPKHD82i6MI3zSSKo55XUNpAbCT9z3AZ8L6KUPamfU4-MHjc0hTvcaBeSrykNjMN9GD-1kpSGb25gXPdwBDvsFE3sEqbMmHHgwgHv01XElv1xxtzaRIIhHLrXb2hxf85haqUfD_y8aFM3Uwiqpgz2CQsgyOnemu98zmvpVYR7toIxkx7MPBMgQqhcnrohN9nchqP_go5eUxHEpxvA56IoNQ">
+                  <div class="absolute top-3 left-3 bg-surface/90 backdrop-blur-sm px-2 py-1 rounded text-xs font-bold text-primary shadow-sm">IT &amp; Tech</div>
+                </div>
+                <div class="p-5">
+                  <h4 class="font-label-md text-label-md text-on-background mb-2 line-clamp-2">Pemrograman Web (Flexbox/Grid UI)</h4>
+                  <div class="flex items-center gap-2 text-on-surface-variant font-label-sm text-label-sm mb-4">
+                    <span class="material-symbols-outlined text-[16px]">menu_book</span>
+                    <span>Modul 4/8</span>
+                  </div>
+                  <div class="space-y-2">
+                    <div class="flex justify-between font-label-sm text-label-sm">
+                      <span class="text-on-surface-variant">Progress</span>
+                      <span class="text-secondary font-bold">50%</span>
+                    </div>
+                    <div class="h-2 w-full bg-surface-variant rounded-full overflow-hidden">
+                      <div class="h-full bg-secondary rounded-full relative" style="width: 50%">
+                        <div class="absolute right-0 top-0 bottom-0 w-4 bg-white/20 animate-pulse rounded-full"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Course 2 -->
+              <div class="group border border-outline-variant rounded-xl overflow-hidden hover:shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.1)] transition-all bg-surface">
+                <div class="h-32 w-full relative overflow-hidden bg-surface-variant">
+                  <img alt="Kewirausahaan Digital" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWbRJPaec-xa_uXBU0egfHwgWYvuhnMQCoCQqPFbN-sez0OQbOTOqiHpGUF0SrBAGvn9RclVzO-9rUy0DL939J4Mucq0h41FN7KzvZB3tT28nRe6XKLwcVLk1j8MBb-x7zOSpG3zXHgcyRdulHLltdf8bKGQ_6fp-h-teb9pHYDEgsHg7zrpqmtjkDO-0ZDO94RqIXS9SFq2BLrHQa-HmuuoGQ_xY2RfgTE_kEqYB26-Xc4s1t4mXFQA">
+                  <div class="absolute top-3 left-3 bg-surface/90 backdrop-blur-sm px-2 py-1 rounded text-xs font-bold text-tertiary-container shadow-sm">Business</div>
+                </div>
+                <div class="p-5">
+                  <h4 class="font-label-md text-label-md text-on-background mb-2 line-clamp-2">Kewirausahaan Digital</h4>
+                  <div class="flex items-center gap-2 text-on-surface-variant font-label-sm text-label-sm mb-4">
+                    <span class="material-symbols-outlined text-[16px]">menu_book</span>
+                    <span>Modul 6/10</span>
+                  </div>
+                  <div class="space-y-2">
+                    <div class="flex justify-between font-label-sm text-label-sm">
+                      <span class="text-on-surface-variant">Progress</span>
+                      <span class="text-secondary font-bold">60%</span>
+                    </div>
+                    <div class="h-2 w-full bg-surface-variant rounded-full overflow-hidden">
+                      <div class="h-full bg-secondary rounded-full relative" style="width: 60%">
+                        <div class="absolute right-0 top-0 bottom-0 w-4 bg-white/20 animate-pulse rounded-full"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="lg:col-span-4 flex flex-col gap-gutter">
+          
+          <!-- Recommendations Sidebar -->
+          <div class="bg-surface-container-lowest rounded-[24px] p-6 shadow-[0px_1px_3px_rgba(0,0,0,0.1)] border border-surface-variant flex-1">
+            <div class="flex items-center gap-2 mb-6">
+              <span class="material-symbols-outlined text-primary">campaign</span>
+              <h3 class="font-headline-md text-[20px] font-semibold text-primary">Rekomendasi Karir</h3>
+            </div>
+            <p class="font-body-sm text-sm text-on-surface-variant mb-6 pb-4 border-b border-outline-variant/30">
+              Berdasarkan minat dan progres belajarmu, kami menyarankan peran berikut:
+            </p>
+            <div class="space-y-4">
+              <!-- Rec 1 -->
+              <div class="group flex items-start gap-4 p-3 rounded-xl hover:bg-surface-container-low transition-colors border border-transparent hover:border-outline-variant/30 cursor-pointer">
+                <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary shrink-0 group-hover:bg-primary group-hover:text-white transition-colors">
+                  <span class="material-symbols-outlined">developer_mode</span>
+                </div>
+                <div class="flex-1">
+                  <h4 class="font-label-md text-label-md text-on-background group-hover:text-primary transition-colors">Junior Web Developer</h4>
+                  <p class="text-xs text-on-surface-variant mt-1 line-clamp-2">Cocok 85% dengan portofolio coding-mu saat ini.</p>
+                </div>
+                <button class="opacity-0 group-hover:opacity-100 transition-opacity text-primary">
+                  <span class="material-symbols-outlined">arrow_forward</span>
+                </button>
+              </div>
+              
+              <!-- Rec 2 -->
+              <div class="group flex items-start gap-4 p-3 rounded-xl hover:bg-surface-container-low transition-colors border border-transparent hover:border-outline-variant/30 cursor-pointer">
+                <div class="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary shrink-0 group-hover:bg-secondary group-hover:text-white transition-colors">
+                  <span class="material-symbols-outlined">share</span>
+                </div>
+                <div class="flex-1">
+                  <h4 class="font-label-md text-label-md text-on-background group-hover:text-secondary transition-colors">Social Media Specialist</h4>
+                  <p class="text-xs text-on-surface-variant mt-1 line-clamp-2">Rekomendasi dari modul Kewirausahaan Digital.</p>
+                </div>
+                <button class="opacity-0 group-hover:opacity-100 transition-opacity text-secondary">
+                  <span class="material-symbols-outlined">arrow_forward</span>
+                </button>
+              </div>
+            </div>
+            
+            <button class="w-full mt-6 border border-primary text-primary font-label-md text-label-md py-2 rounded-lg hover:bg-primary hover:text-white transition-colors h-[44px]">
+              Eksplorasi Karir
+            </button>
+          </div>
+
+          <!-- Activity Chart -->
+          <div class="bg-surface-container-lowest rounded-[24px] p-6 shadow-[0px_1px_3px_rgba(0,0,0,0.1)] border border-surface-variant flex-1 flex flex-col">
+            <div class="flex justify-between items-center mb-6">
+              <h3 class="font-label-md text-label-md font-bold text-on-background">Aktivitas Belajar (Mingguan)</h3>
+              <button class="text-on-surface-variant hover:text-primary transition-colors">
+                <span class="material-symbols-outlined text-[20px]">more_vert</span>
+              </button>
+            </div>
+            
+            <div class="flex-1 flex items-end justify-between gap-2 mt-4 pt-4 border-t border-outline-variant/20 h-40">
+              <div class="flex flex-col items-center gap-2 group w-full">
+                <div class="w-full max-w-[24px] bg-primary/20 rounded-t-sm relative group-hover:bg-primary transition-colors h-[40%] flex items-end justify-center">
+                  <span class="absolute -top-6 text-[10px] font-bold text-primary opacity-0 group-hover:opacity-100 transition-opacity">2h</span>
+                </div>
+                <span class="text-[10px] text-on-surface-variant uppercase">Sen</span>
+              </div>
+              
+              <div class="flex flex-col items-center gap-2 group w-full">
+                <div class="w-full max-w-[24px] bg-primary/20 rounded-t-sm relative group-hover:bg-primary transition-colors h-[70%] flex items-end justify-center">
+                  <span class="absolute -top-6 text-[10px] font-bold text-primary opacity-0 group-hover:opacity-100 transition-opacity">4h</span>
+                </div>
+                <span class="text-[10px] text-on-surface-variant uppercase">Sel</span>
+              </div>
+              
+              <div class="flex flex-col items-center gap-2 group w-full">
+                <div class="w-full max-w-[24px] bg-secondary rounded-t-sm relative shadow-[0_0_8px_rgba(0,108,73,0.4)] h-[90%] flex items-end justify-center">
+                  <span class="absolute -top-6 text-[10px] font-bold text-secondary">5.5h</span>
+                </div>
+                <span class="text-[10px] font-bold text-secondary uppercase">Rab</span>
+              </div>
+              
+              <div class="flex flex-col items-center gap-2 group w-full">
+                <div class="w-full max-w-[24px] bg-primary/20 rounded-t-sm relative group-hover:bg-primary transition-colors h-[30%] flex items-end justify-center">
+                  <span class="absolute -top-6 text-[10px] font-bold text-primary opacity-0 group-hover:opacity-100 transition-opacity">1.5h</span>
+                </div>
+                <span class="text-[10px] text-on-surface-variant uppercase">Kam</span>
+              </div>
+              
+              <div class="flex flex-col items-center gap-2 group w-full">
+                <div class="w-full max-w-[24px] bg-primary/20 rounded-t-sm relative group-hover:bg-primary transition-colors h-[50%] flex items-end justify-center">
+                  <span class="absolute -top-6 text-[10px] font-bold text-primary opacity-0 group-hover:opacity-100 transition-opacity">3h</span>
+                </div>
+                <span class="text-[10px] text-on-surface-variant uppercase">Jum</span>
+              </div>
+              
+              <div class="flex flex-col items-center gap-2 group w-full">
+                <div class="w-full max-w-[24px] bg-surface-variant rounded-t-sm relative group-hover:bg-outline-variant transition-colors h-[10%] flex items-end justify-center">
+                  <span class="absolute -top-6 text-[10px] font-bold text-outline-variant opacity-0 group-hover:opacity-100 transition-opacity">0.5h</span>
+                </div>
+                <span class="text-[10px] text-outline-variant uppercase">Sab</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-surface-container-lowest dark:bg-inverse-surface border-t border-outline-variant w-full py-8 md:pl-72 z-30 relative mt-12">
+    <div class="flex flex-col md:flex-row justify-between items-center px-gutter gap-4 max-w-container-max mx-auto">
+      <div class="flex items-center gap-2">
+        <span class="font-label-md text-label-md font-bold text-on-surface">Vokasi Pintar</span>
+        <span class="text-secondary dark:text-secondary-fixed-dim font-body-md text-body-md">© 2024 Vokasi Pintar LMS. All rights reserved.</span>
+      </div>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a class="text-on-surface-variant font-label-sm text-label-sm hover:text-secondary dark:hover:text-secondary-fixed transition-colors" href="#">Privacy Policy</a>
+        <a class="text-on-surface-variant font-label-sm text-label-sm hover:text-secondary dark:hover:text-secondary-fixed transition-colors" href="#">Terms of Service</a>
+        <a class="text-on-surface-variant font-label-sm text-label-sm hover:text-secondary dark:hover:text-secondary-fixed transition-colors" href="#">Vocational Standards</a>
+        <a class="text-on-surface-variant font-label-sm text-label-sm hover:text-secondary dark:hover:text-secondary-fixed transition-colors" href="#">Certification Seals</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
